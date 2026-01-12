@@ -9,7 +9,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body { background: #0f172a; color: #e5e7eb; line-height: 1.6; scroll-behavior: smooth; }
+    body {
+      background: linear-gradient(135deg, #ebf4dd, #90ab8b);
+      color: #1f2933;
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
     a { text-decoration: none; color: inherit; }
 
     /* Animations */
@@ -25,7 +30,14 @@
     }
 
     /* Navbar */
-    header { position: fixed; top: 0; width: 100%; background: rgba(15,23,42,0.85); backdrop-filter: blur(10px); z-index: 1000; }
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(59,73,83,0.85);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+    }
     .nav { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem; animation: fadeUp 1s ease; }
     .nav h1 { font-size: 1.2rem; font-weight: 600; }
     .nav ul { display: flex; gap: 1.5rem; list-style: none; }
@@ -35,7 +47,20 @@
 
     /* Sections */
     section { padding: 100px 20px; max-width: 1200px; margin: auto; animation: fadeUp 1.2s ease; }
-    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      animation: fadeUp 1.5s ease;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(144,171,139,0.35), transparent 60%);
+      z-index: -1;
+    }
     .hero h2 { font-size: 2.7rem; font-weight: 700; }
     .hero span { color: #38bdf8; }
     .hero p { margin-top: 1rem; max-width: 700px; opacity: 0.9; }
@@ -47,7 +72,29 @@
 
     /* Grid */
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
-    .card { background: #020617; padding: 1.5rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.35); transition: transform 0.4s, box-shadow 0.4s; }
+    .card {
+      background: linear-gradient(160deg, #ffffff, #ebf4dd);
+      padding: 1.8rem;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      transition: transform 0.45s cubic-bezier(.4,.2,.2,1), box-shadow 0.45s;
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp 1.2s ease both;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(90,120,99,0.25), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .card:hover::before { opacity: 1; }
+    .card:hover {
+      transform: translateY(-12px) scale(1.03);
+      box-shadow: 0 30px 60px rgba(59,73,83,0.35);
+    }
     .card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 20px 40px rgba(56,189,248,0.3); }
     .card h4 { margin-bottom: 0.5rem; color: #38bdf8; }
 
@@ -60,6 +107,52 @@
       .hero h2 { font-size: 2rem; }
       .nav ul { display: none; }
     }
+  
+    /* Experience Enhancements */
+    .gdsc-card {
+      background: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d') center/cover no-repeat;
+      color: #ffffff;
+    }
+
+    .gdsc-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(59,73,83,0.92), rgba(90,120,99,0.85));
+      z-index: 0;
+      animation: fadeUp 1.5s ease;
+    }
+
+    .gdsc-card * { position: relative; z-index: 1; }
+
+    .role-duration {
+      font-size: 0.85rem;
+      opacity: 0.85;
+      margin-bottom: 0.6rem;
+    }
+
+    .exp-list {
+      margin: 1rem 0;
+      padding-left: 1.2rem;
+    }
+
+    .exp-list li {
+      margin-bottom: 0.4rem;
+      list-style: disc;
+      animation: fadeUp 1.4s ease;
+    }
+
+    .impact-line {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      font-style: italic;
+      opacity: 0.9;
+    }
+
+    .gdsc-card:hover {
+      transform: scale(1.04) translateY(-6px);
+      box-shadow: 0 40px 80px rgba(0,0,0,0.45);
+    }
+
   </style>
 </head>
 <body>
@@ -73,30 +166,66 @@
         <li><a href="#experience">Experience</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#certifications">Certifications</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+        <li><a href="<section id="contact">
+    <h3 class="section-title">Contact & Presence</h3>
+    <div class="grid">
+      <div class="card">
+        <p><strong>Email</strong><br>himanshujoshi5757@gmail.com</p>
+      </div>
+      <div class="card">
+        <p><strong>Phone</strong><br>+91 7869571357</p>
+      </div>
+      <div class="card">
+        <p><strong>Location</strong><br>Neemuch, Madhya Pradesh</p>
+      </div>
+      <div class="card">
+        <p><strong>LinkedIn</strong></p>
+        <a href="https://www.linkedin.com/in/himanshu-joshi-535b4127b" target="_blank" style="display:flex;align-items:center;gap:10px;color:#3b4953;font-weight:600;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#3b4953" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.266 2.37 4.266 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 114.126 0 2.062 2.062 0 01-2.063 2.065zM7.119 20.452H3.554V9h3.565v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.727v20.545C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.273V1.727C24 .774 23.2 0 22.222 0z"/></svg>
+          View LinkedIn Profile
+        </a>
+      </div>
     </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero" id="about">
-    <h2>Hi, I'm <span>Himanshu Joshi</span></h2>
-    <p>B.Tech Computer Science student and Google Developer Student Clubs Lead with strong interests in software development, cloud computing, and community leadership. I enjoy building scalable applications and mentoring student communities.</p>
-    <a href="#contact" class="btn">Get In Touch</a>
   </section>
 
   <!-- Experience -->
   <section id="experience">
     <h3 class="section-title">Leadership & Experience</h3>
     <div class="grid">
-      <div class="card">
+
+      <!-- GDSC Lead Card -->
+      <div class="card gdsc-card">
+        <div class="gdsc-overlay"></div>
         <h4>GDSC Lead – Mandsaur University</h4>
-        <p>Selected by Google to lead a 350+ student developer community. Conducted 10+ workshops, mentored teams, and guided 5+ real-world projects.</p>
+        <p class="role-duration">Aug 2025 – Present</p>
+        <p>
+          Selected by Google as a <strong>Google Developer Student Clubs Lead</strong>, representing the university among top student leaders nationwide.
+          I designed and executed a complete <strong>developer community ecosystem</strong> focused on peer learning, real-world problem solving, and leadership growth.
+        </p>
+        <ul class="exp-list">
+          <li>Built and scaled a <strong>350+ member</strong> active developer community</li>
+          <li>Planned & delivered <strong>10+ hands-on workshops</strong> (Cloud, App Dev, Data Science)</li>
+          <li>Mentored student teams to ship <strong>5+ real-world projects</strong></li>
+          <li>Collaborated with industry speakers, boosting event participation by <strong>40%</strong></li>
+          <li>Led cross-functional teams (tech, design, outreach, content)</li>
+        </ul>
+        <p class="impact-line">Role Focus: Leadership · System Thinking · Scalable Community Building</p>
       </div>
+
+      <!-- Google Student Ambassador -->
       <div class="card">
         <h4>Google Student Ambassador</h4>
-        <p>Promoted Google tools and cloud technologies across campus, reaching 200+ students through awareness and training sessions.</p>
+        <p class="role-duration">2025 – Present</p>
+        <p>
+          Acted as a bridge between <strong>Google and the student ecosystem</strong>, driving awareness around cloud technologies, tools, and career pathways.
+        </p>
+        <ul class="exp-list">
+          <li>Conducted campus sessions reaching <strong>200+ students</strong></li>
+          <li>Promoted Google Cloud, productivity tools & learning platforms</li>
+          <li>Encouraged adoption of industry-aligned skills</li>
+        </ul>
       </div>
+
     </div>
   </section>
 
