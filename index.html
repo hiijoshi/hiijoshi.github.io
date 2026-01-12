@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Himanshu Joshi | Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- System font stack for ultra-fast load -->
 <style>
 :root{
   --c1:#ebf4dd;
@@ -12,7 +12,7 @@
   --c3:#5a7863;
   --c4:#3b4953;
 }
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Ubuntu,sans-serif}
 body{background:var(--c1);color:#1f2933;line-height:1.6}
 a{text-decoration:none;color:inherit}
 
@@ -32,7 +32,7 @@ section{max-width:1100px;margin:auto;padding:100px 1rem}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
 .card{background:#fff;padding:1.5rem;border-radius:14px;box-shadow:0 10px 25px rgba(0,0,0,.12)}
 
-.gdsc{background:linear-gradient(rgba(59,73,83,.9),rgba(59,73,83,.9)),url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d') center/cover;color:#fff}
+.gdsc{background:linear-gradient(rgba(59,73,83,.95),rgba(59,73,83,.95));color:#fff}
 
 footer{background:var(--c4);color:#fff;text-align:center;padding:1.5rem}
 
@@ -40,6 +40,52 @@ footer{background:var(--c4);color:#fff;text-align:center;padding:1.5rem}
   .nav ul{display:none}
   .hero h1{font-size:2rem}
 }
+
+/* ====== VISUAL TEXTURE & ENGINEERING DETAILS (SAFE ADD-ON) ====== */
+
+/* subtle noise texture */
+/* ultra-light noise removed for speed (0 paint cost) */
+
+/* binary accent background in hero */
+.hero::after{
+  content:"01001001 01001110 01000110 01001111 01010010 01001101 01000001 01010100 01001001 01001111 01001110";
+  position:absolute;
+  bottom:10%;
+  right:5%;
+  font-size:0.75rem;
+  letter-spacing:2px;
+  color:rgba(59,73,83,0.18);
+  max-width:300px;
+  line-height:1.8;
+}
+
+/* card engineering grid texture */
+/* grid texture disabled for instant rendering */
+
+/* hover code-glow */
+.card:hover{
+  box-shadow:0 20px 40px rgba(59,73,83,.25),
+             inset 0 0 0 1px rgba(90,120,99,.35);
+}
+
+/* subtle section divider */
+section::after{
+  content:"";
+  display:block;
+  height:1px;
+  margin-top:60px;
+  background:linear-gradient(to right, transparent, rgba(90,120,99,.4), transparent);
+}
+
+/* footer binary detail */
+footer::before{
+  
+  display:block;
+  margin-bottom:8px;
+  font-size:.75rem;
+  opacity:.5;
+}
+
 </style>
 </head>
 <body>
