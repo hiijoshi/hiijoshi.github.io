@@ -1,271 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Himanshu Joshi | Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body {
-      background: linear-gradient(135deg, #ebf4dd, #90ab8b);
-      color: #1f2933;
-      line-height: 1.7;
-      scroll-behavior: smooth;
-    }
-    a { text-decoration: none; color: inherit; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Himanshu Joshi | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c1:#ebf4dd;
+  --c2:#90ab8b;
+  --c3:#5a7863;
+  --c4:#3b4953;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:var(--c1);color:#1f2933;line-height:1.6}
+a{text-decoration:none;color:inherit}
 
-    /* Animations */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+header{position:fixed;top:0;width:100%;background:var(--c4);z-index:1000}
+.nav{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:1rem;color:#fff}
+.nav ul{list-style:none;display:flex;gap:1.2rem}
+.nav ul li a{font-size:.9rem;opacity:.9}
 
-    @keyframes glow {
-      0% { box-shadow: 0 0 0px #38bdf8; }
-      50% { box-shadow: 0 0 20px #38bdf8; }
-      100% { box-shadow: 0 0 0px #38bdf8; }
-    }
+section{max-width:1100px;margin:auto;padding:100px 1rem}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+.hero h1{font-size:2.4rem;color:var(--c4)}
+.hero span{color:var(--c3)}
+.hero p{margin-top:1rem;max-width:650px}
+.btn{margin-top:1.5rem;display:inline-block;padding:.8rem 1.6rem;background:var(--c4);color:#fff;border-radius:6px}
 
-    /* Navbar */
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(59,73,83,0.85);
-      backdrop-filter: blur(12px);
-      z-index: 1000;
-    }
-    .nav { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem; animation: fadeUp 1s ease; }
-    .nav h1 { font-size: 1.2rem; font-weight: 600; }
-    .nav ul { display: flex; gap: 1.5rem; list-style: none; }
-    .nav ul li a { font-size: 0.9rem; position: relative; }
-    .nav ul li a::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 2px; background: #38bdf8; transition: width 0.3s; }
-    .nav ul li a:hover::after { width: 100%; }
+.title{font-size:1.7rem;margin-bottom:1.5rem;color:var(--c4);border-left:5px solid var(--c3);padding-left:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+.card{background:#fff;padding:1.5rem;border-radius:14px;box-shadow:0 10px 25px rgba(0,0,0,.12)}
 
-    /* Sections */
-    section { padding: 100px 20px; max-width: 1200px; margin: auto; animation: fadeUp 1.2s ease; }
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      animation: fadeUp 1.5s ease;
-    }
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top right, rgba(144,171,139,0.35), transparent 60%);
-      z-index: -1;
-    }
-    .hero h2 { font-size: 2.7rem; font-weight: 700; }
-    .hero span { color: #38bdf8; }
-    .hero p { margin-top: 1rem; max-width: 700px; opacity: 0.9; }
+.gdsc{background:linear-gradient(rgba(59,73,83,.9),rgba(59,73,83,.9)),url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d') center/cover;color:#fff}
 
-    .btn { margin-top: 1.5rem; display: inline-block; padding: 0.8rem 1.7rem; background: #38bdf8; color: #020617; border-radius: 8px; font-weight: 500; transition: transform 0.3s; animation: glow 3s infinite; }
-    .btn:hover { transform: scale(1.05); }
+footer{background:var(--c4);color:#fff;text-align:center;padding:1.5rem}
 
-    h3.section-title { font-size: 1.8rem; margin-bottom: 2rem; border-left: 4px solid #38bdf8; padding-left: 10px; }
-
-    /* Grid */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
-    .card {
-      background: linear-gradient(160deg, #ffffff, #ebf4dd);
-      padding: 1.8rem;
-      border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-      transition: transform 0.45s cubic-bezier(.4,.2,.2,1), box-shadow 0.45s;
-      position: relative;
-      overflow: hidden;
-      animation: fadeUp 1.2s ease both;
-    }
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, transparent, rgba(90,120,99,0.25), transparent);
-      opacity: 0;
-      transition: opacity 0.4s;
-    }
-    .card:hover::before { opacity: 1; }
-    .card:hover {
-      transform: translateY(-12px) scale(1.03);
-      box-shadow: 0 30px 60px rgba(59,73,83,0.35);
-    }
-    .card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 20px 40px rgba(56,189,248,0.3); }
-    .card h4 { margin-bottom: 0.5rem; color: #38bdf8; }
-
-    /* Footer */
-    footer { background: #020617; padding: 2rem 1rem; text-align: center; animation: fadeUp 1s ease; }
-    footer p { font-size: 0.85rem; color: #9ca3af; }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .hero h2 { font-size: 2rem; }
-      .nav ul { display: none; }
-    }
-  
-    /* Experience Enhancements */
-    .gdsc-card {
-      background: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d') center/cover no-repeat;
-      color: #ffffff;
-    }
-
-    .gdsc-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(59,73,83,0.92), rgba(90,120,99,0.85));
-      z-index: 0;
-      animation: fadeUp 1.5s ease;
-    }
-
-    .gdsc-card * { position: relative; z-index: 1; }
-
-    .role-duration {
-      font-size: 0.85rem;
-      opacity: 0.85;
-      margin-bottom: 0.6rem;
-    }
-
-    .exp-list {
-      margin: 1rem 0;
-      padding-left: 1.2rem;
-    }
-
-    .exp-list li {
-      margin-bottom: 0.4rem;
-      list-style: disc;
-      animation: fadeUp 1.4s ease;
-    }
-
-    .impact-line {
-      margin-top: 1rem;
-      font-size: 0.85rem;
-      font-style: italic;
-      opacity: 0.9;
-    }
-
-    .gdsc-card:hover {
-      transform: scale(1.04) translateY(-6px);
-      box-shadow: 0 40px 80px rgba(0,0,0,0.45);
-    }
-
-  </style>
+@media(max-width:768px){
+  .nav ul{display:none}
+  .hero h1{font-size:2rem}
+}
+</style>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <header>
-    <div class="nav">
-      <h1>Himanshu Joshi</h1>
+<header>
+  <div class="nav">
+    <h3>Himanshu Joshi</h3>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="hero" id="about">
+  <h1>Computer Science <span>Engineer</span></h1>
+  <p>B.Tech CSE student, GDSC Lead and Google Student Ambassador. I build scalable systems, lead developer communities, and apply engineering thinking to real-world problems.</p>
+  <a class="btn" href="#contact">Connect With Me</a>
+</section>
+
+<section id="experience">
+  <div class="title">Leadership & Experience</div>
+  <div class="grid">
+    <div class="card gdsc">
+      <h3>GDSC Lead – Mandsaur University</h3>
+      <p>Aug 2025 – Present</p>
       <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#certifications">Certifications</a></li>
-        <li><a href="<section id="contact">
-    <h3 class="section-title">Contact & Presence</h3>
-    <div class="grid">
-      <div class="card">
-        <p><strong>Email</strong><br>himanshujoshi5757@gmail.com</p>
-      </div>
-      <div class="card">
-        <p><strong>Phone</strong><br>+91 7869571357</p>
-      </div>
-      <div class="card">
-        <p><strong>Location</strong><br>Neemuch, Madhya Pradesh</p>
-      </div>
-      <div class="card">
-        <p><strong>LinkedIn</strong></p>
-        <a href="https://www.linkedin.com/in/himanshu-joshi-535b4127b" target="_blank" style="display:flex;align-items:center;gap:10px;color:#3b4953;font-weight:600;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#3b4953" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.266 2.37 4.266 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 114.126 0 2.062 2.062 0 01-2.063 2.065zM7.119 20.452H3.554V9h3.565v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.727v20.545C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.273V1.727C24 .774 23.2 0 22.222 0z"/></svg>
-          View LinkedIn Profile
-        </a>
-      </div>
+        <li>Led 350+ student developer community</li>
+        <li>Conducted 10+ technical workshops</li>
+        <li>Mentored teams on 5+ real-world projects</li>
+        <li>Increased event engagement by 40%</li>
+      </ul>
     </div>
-  </section>
-
-  <!-- Experience -->
-  <section id="experience">
-    <h3 class="section-title">Leadership & Experience</h3>
-    <div class="grid">
-
-      <!-- GDSC Lead Card -->
-      <div class="card gdsc-card">
-        <div class="gdsc-overlay"></div>
-        <h4>GDSC Lead – Mandsaur University</h4>
-        <p class="role-duration">Aug 2025 – Present</p>
-        <p>
-          Selected by Google as a <strong>Google Developer Student Clubs Lead</strong>, representing the university among top student leaders nationwide.
-          I designed and executed a complete <strong>developer community ecosystem</strong> focused on peer learning, real-world problem solving, and leadership growth.
-        </p>
-        <ul class="exp-list">
-          <li>Built and scaled a <strong>350+ member</strong> active developer community</li>
-          <li>Planned & delivered <strong>10+ hands-on workshops</strong> (Cloud, App Dev, Data Science)</li>
-          <li>Mentored student teams to ship <strong>5+ real-world projects</strong></li>
-          <li>Collaborated with industry speakers, boosting event participation by <strong>40%</strong></li>
-          <li>Led cross-functional teams (tech, design, outreach, content)</li>
-        </ul>
-        <p class="impact-line">Role Focus: Leadership · System Thinking · Scalable Community Building</p>
-      </div>
-
-      <!-- Google Student Ambassador -->
-      <div class="card">
-        <h4>Google Student Ambassador</h4>
-        <p class="role-duration">2025 – Present</p>
-        <p>
-          Acted as a bridge between <strong>Google and the student ecosystem</strong>, driving awareness around cloud technologies, tools, and career pathways.
-        </p>
-        <ul class="exp-list">
-          <li>Conducted campus sessions reaching <strong>200+ students</strong></li>
-          <li>Promoted Google Cloud, productivity tools & learning platforms</li>
-          <li>Encouraged adoption of industry-aligned skills</li>
-        </ul>
-      </div>
-
+    <div class="card">
+      <h3>Google Student Ambassador</h3>
+      <p>2025 – Present</p>
+      <ul>
+        <li>Promoted Google Cloud & tools</li>
+        <li>Reached 200+ students</li>
+      </ul>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Skills -->
-  <section id="skills">
-    <h3 class="section-title">Skills</h3>
-    <div class="grid">
-      <div class="card"><h4>Programming</h4><p>Python, C++, Java, SQL, HTML, CSS, JavaScript</p></div>
-      <div class="card"><h4>Cloud & Tools</h4><p>Google Cloud, Microsoft 365, GitHub, Figma</p></div>
-      <div class="card"><h4>Domains</h4><p>Data Science, Cybersecurity, Marketing Strategy, Content Design</p></div>
-      <div class="card"><h4>Soft Skills</h4><p>Leadership, Public Speaking, Team Collaboration, Problem Solving</p></div>
+<section id="skills">
+  <div class="title">Skills</div>
+  <div class="grid">
+    <div class="card">Python, C++, Java, SQL</div>
+    <div class="card">HTML, CSS, JavaScript</div>
+    <div class="card">Google Cloud, GitHub</div>
+    <div class="card">Leadership, Public Speaking</div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="title">Contact</div>
+  <div class="grid">
+    <div class="card">📧 himanshujoshi5757@gmail.com</div>
+    <div class="card">📞 +91 7869571357</div>
+    <div class="card">
+      <a href="https://www.linkedin.com/in/himanshu-joshi-535b4127b" target="_blank">🔗 LinkedIn Profile</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Certifications -->
-  <section id="certifications">
-    <h3 class="section-title">Certifications</h3>
-    <div class="grid">
-      <div class="card">LinkedIn Certified Marketing Insider</div>
-      <div class="card">Career Essentials in Business Analysis – Microsoft & LinkedIn</div>
-      <div class="card">Learning Data Science: Understanding the Basics – LinkedIn</div>
-      <div class="card">Foundations: Data, Data, Everywhere – Google</div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <h3 class="section-title">Contact</h3>
-    <div class="grid">
-      <div class="card"><p>Email: himanshujoshi5757@gmail.com</p></div>
-      <div class="card"><p>Phone: +91 7869571357</p></div>
-      <div class="card"><p>LinkedIn: linkedin.com/in/himanshu-joshi-535b4127b</p></div>
-      <div class="card"><p>Location: Neemuch, Madhya Pradesh</p></div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2026 Himanshu Joshi. All rights reserved.</p>
-  </footer>
+<footer>© 2026 Himanshu Joshi</footer>
 
 </body>
 </html>
