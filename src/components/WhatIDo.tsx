@@ -4,9 +4,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const WhatIDo = () => {
   const containerRef = useRef<(HTMLDivElement | null)[]>([]);
+
   const setRef = (el: HTMLDivElement | null, index: number) => {
     containerRef.current[index] = el;
   };
+
   useEffect(() => {
     if (ScrollTrigger.isTouch) {
       containerRef.current.forEach((container) => {
@@ -16,6 +18,7 @@ const WhatIDo = () => {
         }
       });
     }
+
     return () => {
       containerRef.current.forEach((container) => {
         if (container) {
@@ -24,6 +27,7 @@ const WhatIDo = () => {
       });
     };
   }, []);
+
   return (
     <div className="whatIDO">
       <div className="what-box">
@@ -34,6 +38,7 @@ const WhatIDo = () => {
           </div>
         </h2>
       </div>
+
       <div className="what-box">
         <div className="what-box-in">
           <div className="what-border2">
@@ -58,6 +63,7 @@ const WhatIDo = () => {
               />
             </svg>
           </div>
+
           <div
             className="what-content what-noTouch"
             ref={(el) => setRef(el, 0)}
@@ -84,29 +90,35 @@ const WhatIDo = () => {
                 />
               </svg>
             </div>
+
             <div className="what-corner"></div>
 
             <div className="what-content-in">
               <h3>FRONTEND</h3>
-              <h4>Building Interactive UIs</h4>
+              <h4>Interfaces that feel sharp, smooth, and alive</h4>
               <p>
-                Crafting performant, responsive interfaces with modern frameworks.
-                From SPAs to micro-frontends, I deliver pixel-perfect experiences.
+                I design and build web experiences that don’t just look good —
+                they feel good to use. I enjoy turning plain screens into modern,
+                responsive interfaces with strong visual flow, clean structure,
+                and details that make the product feel premium.
               </p>
-              <h5>Skillset & tools</h5>
+
+              <h5>What I use</h5>
               <div className="what-content-flex">
-                <div className="what-tags">React.js</div>
-                <div className="what-tags">Angular</div>
-                <div className="what-tags">Next.js</div>
-                <div className="what-tags">TypeScript</div>
+                <div className="what-tags">HTML</div>
+                <div className="what-tags">CSS</div>
                 <div className="what-tags">JavaScript</div>
-                <div className="what-tags">Material UI</div>
-                <div className="what-tags">HTML5</div>
-                <div className="what-tags">CSS3</div>
+                <div className="what-tags">TypeScript</div>
+                <div className="what-tags">React</div>
+                <div className="what-tags">Next.js</div>
+                <div className="what-tags">GSAP</div>
+                <div className="what-tags">GitHub</div>
               </div>
+
               <div className="what-arrow"></div>
             </div>
           </div>
+
           <div
             className="what-content what-noTouch"
             ref={(el) => setRef(el, 1)}
@@ -124,25 +136,31 @@ const WhatIDo = () => {
                 />
               </svg>
             </div>
+
             <div className="what-corner"></div>
+
             <div className="what-content-in">
-              <h3>BACKEND</h3>
-              <h4>Scalable Server Architecture</h4>
+              <h3>SYSTEMS & AUTOMATION</h3>
+              <h4>Turning messy workflows into usable products</h4>
               <p>
-                Designing robust APIs and microservices. From CMS platforms to
-                complex business logic, I build backends that scale.
+                I like building practical systems — billing apps, automation tools,
+                and logic-driven workflows that solve actual day-to-day problems.
+                My focus is simple: remove friction, improve flow, and build things
+                that are genuinely useful in the real world.
               </p>
-              <h5>Skillset & tools</h5>
+
+              <h5>What I work with</h5>
               <div className="what-content-flex">
-                <div className="what-tags">Node.js</div>
-                <div className="what-tags">NestJS</div>
-                <div className="what-tags">Express.js</div>
-                <div className="what-tags">MongoDB</div>
-                <div className="what-tags">PostgreSQL</div>
-                <div className="what-tags">REST APIs</div>
-                <div className="what-tags">Microservices</div>
                 <div className="what-tags">Python</div>
+                <div className="what-tags">Node.js</div>
+                <div className="what-tags">Express.js</div>
+                <div className="what-tags">SQL</div>
+                <div className="what-tags">Prisma</div>
+                <div className="what-tags">SQLite</div>
+                <div className="what-tags">REST APIs</div>
+                <div className="what-tags">Automation</div>
               </div>
+
               <div className="what-arrow"></div>
             </div>
           </div>
@@ -157,6 +175,7 @@ export default WhatIDo;
 function handleClick(container: HTMLDivElement) {
   container.classList.toggle("what-content-active");
   container.classList.remove("what-sibling");
+
   if (container.parentElement) {
     const siblings = Array.from(container.parentElement.children);
 

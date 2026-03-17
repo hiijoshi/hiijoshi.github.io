@@ -5,34 +5,39 @@ import { MdArrowBack, MdArrowForward } from "react-icons/md";
 
 const projects = [
   {
-    title: "Solid Starters",
-    category: "Low-Code Platform",
-    tools: "Angular, Next.js, NestJS, MongoDB",
-    image: "/images/Solidx.png",
+    title: "Billing Management System",
+    category: "Business Application",
+    tools: "React, TypeScript, Prisma, SQLite",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
   },
   {
-    title: "Radix",
-    category: "E-Commerce",
-    tools: "Angular, Next.js, NestJS, CMS",
-    image: "/images/radix.png",
+    title: "Portfolio Website (GSAP)",
+    category: "Personal Branding",
+    tools: "React, TypeScript, GSAP, Three.js",
+    image:
+      "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1200&auto=format&fit=crop",
   },
   {
-    title: "Bond Cancellation",
-    category: "Import-Export Automation",
-    tools: "Angular, Next.js, NestJS, Workflows",
-    image: "/images/bond.png",
+    title: "Automation System",
+    category: "Workflow Automation",
+    tools: "Python, Scripts, Task Automation",
+    image:
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
   },
   {
-    title: "Sapphire",
-    category: "CRM Platform",
-    tools: "AngularJS, NestJS, PostgreSQL",
-    image: "/images/sapphire.png",
+    title: "Analytics Replay Debugger",
+    category: "Developer Tool",
+    tools: "PHP, CLI, Event Testing",
+    image:
+      "https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=1200&auto=format&fit=crop",
   },
   {
-    title: "Mpro",
-    category: "Insurance Platform",
-    tools: "React.js, Node.js, Microservices",
-    image: "/images/Maxlife.png",
+    title: "Python Vision Projects",
+    category: "Computer Vision",
+    tools: "Python, OpenCV, Face Detection",
+    image:
+      "https://images.unsplash.com/photo-1507146426996-ef05306b995a?q=80&w=1200&auto=format&fit=crop",
   },
 ];
 
@@ -70,7 +75,6 @@ const Work = () => {
         </h2>
 
         <div className="carousel-wrapper">
-          {/* Navigation Arrows */}
           <button
             className="carousel-arrow carousel-arrow-left"
             onClick={goToPrev}
@@ -79,6 +83,7 @@ const Work = () => {
           >
             <MdArrowBack />
           </button>
+
           <button
             className="carousel-arrow carousel-arrow-right"
             onClick={goToNext}
@@ -88,7 +93,6 @@ const Work = () => {
             <MdArrowForward />
           </button>
 
-          {/* Slides */}
           <div className="carousel-track-container">
             <div
               className="carousel-track"
@@ -103,17 +107,18 @@ const Work = () => {
                       <div className="carousel-number">
                         <h3>0{index + 1}</h3>
                       </div>
+
                       <div className="carousel-details">
                         <h4>{project.title}</h4>
-                        <p className="carousel-category">
-                          {project.category}
-                        </p>
+                        <p className="carousel-category">{project.category}</p>
+
                         <div className="carousel-tools">
-                          <span className="tools-label">Tools & Features</span>
+                          <span className="tools-label">Tech Stack</span>
                           <p>{project.tools}</p>
                         </div>
                       </div>
                     </div>
+
                     <div className="carousel-image-wrapper">
                       <WorkImage image={project.image} alt={project.title} />
                     </div>
@@ -123,13 +128,13 @@ const Work = () => {
             </div>
           </div>
 
-          {/* Dot Indicators */}
           <div className="carousel-dots">
             {projects.map((_, index) => (
               <button
                 key={index}
-                className={`carousel-dot ${index === currentIndex ? "carousel-dot-active" : ""
-                  }`}
+                className={`carousel-dot ${
+                  index === currentIndex ? "carousel-dot-active" : ""
+                }`}
                 onClick={() => goToSlide(index)}
                 aria-label={`Go to project ${index + 1}`}
                 data-cursor="disable"
