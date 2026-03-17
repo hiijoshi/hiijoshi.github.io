@@ -1,7 +1,4 @@
-import {
-  FaGithub,
-  FaLinkedinIn,
-} from "react-icons/fa6";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import "./styles/SocialIcons.css";
 import { TbNotes } from "react-icons/tb";
 import { useEffect } from "react";
@@ -12,7 +9,7 @@ const SocialIcons = () => {
     const social = document.getElementById("social") as HTMLElement | null;
     if (!social) return;
 
-    const cleanups: (() => void)[] = [];
+    const cleanups: Array<() => void> = [];
 
     social.querySelectorAll("span").forEach((item) => {
       const elem = item as HTMLElement;
@@ -41,7 +38,7 @@ const SocialIcons = () => {
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
 
-        if (x < rect.width && x > 0 && y < rect.height && y > 0) {
+        if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
           mouseX = x;
           mouseY = y;
         } else {
