@@ -1,8 +1,6 @@
 import {
   FaGithub,
-  FaInstagram,
   FaLinkedinIn,
-  FaXTwitter,
 } from "react-icons/fa6";
 import "./styles/SocialIcons.css";
 import { TbNotes } from "react-icons/tb";
@@ -11,17 +9,22 @@ import HoverLinks from "./HoverLinks";
 
 const SocialIcons = () => {
   useEffect(() => {
-    const social = document.getElementById("social") as HTMLElement;
+    const social = document.getElementById("social") as HTMLElement | null;
+    if (!social) return;
+
+    const cleanups: (() => void)[] = [];
 
     social.querySelectorAll("span").forEach((item) => {
       const elem = item as HTMLElement;
-      const link = elem.querySelector("a") as HTMLElement;
+      const link = elem.querySelector("a") as HTMLElement | null;
+      if (!link) return;
 
-      const rect = elem.getBoundingClientRect();
+      let rect = elem.getBoundingClientRect();
       let mouseX = rect.width / 2;
       let mouseY = rect.height / 2;
-      let currentX = 0;
-      let currentY = 0;
+      let currentX = rect.width / 2;
+      let currentY = rect.height / 2;
+      let animationFrameId = 0;
 
       const updatePosition = () => {
         currentX += (mouseX - currentX) * 0.1;
@@ -30,14 +33,15 @@ const SocialIcons = () => {
         link.style.setProperty("--siLeft", `${currentX}px`);
         link.style.setProperty("--siTop", `${currentY}px`);
 
-        requestAnimationFrame(updatePosition);
+        animationFrameId = requestAnimationFrame(updatePosition);
       };
 
       const onMouseMove = (e: MouseEvent) => {
+        rect = elem.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
 
-        if (x < 40 && x > 10 && y < 40 && y > 5) {
+        if (x < rect.width && x > 0 && y < rect.height && y > 0) {
           mouseX = x;
           mouseY = y;
         } else {
@@ -47,32 +51,51 @@ const SocialIcons = () => {
       };
 
       document.addEventListener("mousemove", onMouseMove);
+      animationFrameId = requestAnimationFrame(updatePosition);
 
-      updatePosition();
-
-      return () => {
-        elem.removeEventListener("mousemove", onMouseMove);
-      };
+      cleanups.push(() => {
+        document.removeEventListener("mousemove", onMouseMove);
+        cancelAnimationFrame(animationFrameId);
+      });
     });
+
+    return () => {
+      cleanups.forEach((cleanup) => cleanup());
+    };
   }, []);
 
   return (
     <div className="icons-section">
       <div className="social-icons" data-cursor="icons" id="social">
         <span>
-          <a href="https://github.com/hiijoshi" target="_blank">
+          <a
+            href="https://github.com/himanshujoshi0310"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub"
+          >
             <FaGithub />
           </a>
         </span>
+
         <span>
-          <a href="www.linkedin.com/in/himanshu-joshi-535b4127b" target="_blank">
+          <a
+            href="https://www.linkedin.com/in/himanshu-joshi-535b4127b"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn"
+          >
             <FaLinkedinIn />
           </a>
         </span>
-       
-        
       </div>
-      <a className="resume-button" href="#">
+
+      <a
+        className="resume-button"
+        href="/resume.pdf"
+        target="_blank"
+        rel="noreferrer"
+      >
         <HoverLinks text="RESUME" />
         <span>
           <TbNotes />

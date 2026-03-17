@@ -6,51 +6,52 @@ const Contact = () => {
     <div className="contact-section section-container" id="contact">
       <div className="contact-container">
         <h3>Contact</h3>
+
         <div className="contact-flex">
           <div className="contact-box">
             <h4>Email</h4>
             <p>
-              <a href="mailto:rajeshchittyal21@gmail.com" data-cursor="disable">
+              <a href="mailto:himanshujoshi5757@gmail.com" data-cursor="disable">
                 himanshujoshi5757@gmail.com
               </a>
             </p>
+
             <h4>Education</h4>
             <p>B.Tech in Computer Science</p>
-          </div>
-          <div className="contact-box">
+
             <h4>Social</h4>
-            <a
-              href="https://github.com/hiijoshi"
-              target="_blank"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Github <MdArrowOutward />
-            </a>
-            <a
-              href="www.linkedin.com/in/himanshu-joshi-535b4127b"
-              target="_blank"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Linkedin <MdArrowOutward />
-            </a>
-            
-              
-              
-            
-              
-            
-        
+            <div className="social-links">
+              <a
+                href="https://github.com/himanshujoshi0310"
+                target="_blank"
+                rel="noreferrer"
+                data-cursor="disable"
+              >
+                GitHub <MdArrowOutward />
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/himanshu-joshi-535b4127b"
+                target="_blank"
+                rel="noreferrer"
+                data-cursor="disable"
+              >
+                LinkedIn <MdArrowOutward />
+              </a>
+            </div>
           </div>
-          <div className="contact-box">
-            <h2>
-              Designed and Developed <br /> by <span> Himanshu Joshi</span>
-            </h2>
-            <h5>
-              <MdCopyright /> 2025
-            </h5>
-          </div>
+        </div>
+
+        <div className="contact-footer">
+          <h2>
+            Designed and Developed
+            <br />
+            by Himanshu Joshi
+          </h2>
+
+          <h5>
+            <MdCopyright /> 2026
+          </h5>
         </div>
       </div>
     </div>
