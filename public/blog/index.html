@@ -1,28 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Blog - Himanshu Joshi</title>
-  <meta name="description" content="Practical blogs by Himanshu Joshi on web development, SEO, deployment and projects.">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://hiijoshi.in/blog/">
+  <meta
+    name="description"
+    content="Read practical blogs by Himanshu Joshi on web development, deployment, SEO, Google Search Console, AdSense, GitHub Pages, AWS Lightsail, and real project case studies."
+  />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hiijoshi.in/blog/" />
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f7f7f7;
+      color: #111;
+      line-height: 1.7;
+    }
+
+    header {
+      background: #111;
+      color: #fff;
+      padding: 24px 20px;
+    }
+
+    header .container,
+    main,
+    footer .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    nav {
+      margin-top: 12px;
+    }
+
+    nav a {
+      color: #fff;
+      margin-right: 16px;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    main {
+      padding: 40px 20px;
+    }
+
+    .intro {
+      background: #fff;
+      padding: 28px;
+      border-radius: 14px;
+      border: 1px solid #ddd;
+      margin-bottom: 28px;
+    }
+
+    .post {
+      background: #fff;
+      padding: 26px;
+      border-radius: 14px;
+      border: 1px solid #ddd;
+      margin-bottom: 22px;
+    }
+
+    .post h2 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .post a {
+      color: #005bea;
+      text-decoration: none;
+    }
+
+    .post a:hover {
+      text-decoration: underline;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #eef3ff;
+      color: #1d4ed8;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-right: 6px;
+      margin-top: 8px;
+    }
+
+    .date {
+      color: #666;
+      font-size: 14px;
+    }
+
+    footer {
+      background: #111;
+      color: #fff;
+      padding: 24px 20px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #fff;
+      margin-right: 12px;
+      text-decoration: none;
+    }
+  </style>
 </head>
-<body style="font-family:Arial;max-width:900px;margin:auto;padding:40px;">
-  <h1>Blog</h1>
-  <p>I share practical guides about web development, deployment, SEO, and real projects.</p>
 
-  <h2>Latest Articles</h2>
-  <ul>
-    <li>How I deployed a Next.js app on AWS Lightsail</li>
-    <li>How I fixed Google Search Console canonical issues</li>
-    <li>MandiCentral case study: building a business operations platform</li>
-  </ul>
+<body>
+  <header>
+    <div class="container">
+      <h1>Himanshu Joshi Blog</h1>
+      <p>Practical notes from my real web development, SEO, deployment, and project-building journey.</p>
 
-  <p>
-    <a href="/">Home</a> |
-    <a href="/services/">Services</a> |
-    <a href="/tools/">Tools</a> |
-    <a href="/contact/">Contact</a>
-  </p>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/tools/">Tools</a>
+        <a href="/services/">Services</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h2>Developer Blog and Project Notes</h2>
+      <p>
+        This blog is where I share real practical articles from my own experience.
+        I write about website development, deployment, Google Search Console,
+        AdSense preparation, GitHub Pages, AWS Lightsail, SEO fixes, and real project case studies.
+      </p>
+      <p>
+        My aim is to keep every article simple, useful, and based on actual work instead of only theory.
+      </p>
+    </section>
+
+    <article class="post">
+      <p class="date">Published: June 7, 2026</p>
+      <h2>
+        <a href="/blog/adsense-ready-portfolio-website/">
+          How I Made My Portfolio Website Ready for Google AdSense
+        </a>
+      </h2>
+      <p>
+        In this article, I explain how I converted my portfolio website into a more complete website
+        with blog, tools, services, about, contact, privacy policy, terms, disclaimer, sitemap, and robots.txt.
+      </p>
+      <span class="tag">AdSense</span>
+      <span class="tag">Portfolio</span>
+      <span class="tag">SEO</span>
+    </article>
+
+    <article class="post">
+      <p class="date">Coming Soon</p>
+      <h2>
+        <a href="/blog/aws-lightsail-nextjs-deployment/">
+          How I Deployed a Next.js App on AWS Lightsail with Nginx and SSL
+        </a>
+      </h2>
+      <p>
+        A practical deployment guide based on my own production project experience using AWS Lightsail,
+        PM2, Nginx reverse proxy, custom domain, and SSL certificate.
+      </p>
+      <span class="tag">AWS</span>
+      <span class="tag">Deployment</span>
+      <span class="tag">Next.js</span>
+    </article>
+
+    <article class="post">
+      <p class="date">Coming Soon</p>
+      <h2>
+        <a href="/blog/google-search-console-canonical-fix/">
+          How I Fixed Google Search Console Duplicate Canonical Issues
+        </a>
+      </h2>
+      <p>
+        A real case study about fixing duplicate canonical problems, sitemap submission,
+        redirects, and indexing issues in Google Search Console.
+      </p>
+      <span class="tag">Google Search Console</span>
+      <span class="tag">SEO</span>
+      <span class="tag">Indexing</span>
+    </article>
+
+    <article class="post">
+      <p class="date">Coming Soon</p>
+      <h2>
+        <a href="/blog/mandicentral-case-study/">
+          MandiCentral Case Study: Building a Business Operations Platform
+        </a>
+      </h2>
+      <p>
+        A project case study explaining how I worked on billing, ledger, PDF generation,
+        APIs, accounting reports, and real business software features.
+      </p>
+      <span class="tag">Case Study</span>
+      <span class="tag">Business Software</span>
+      <span class="tag">Full Stack</span>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <a href="/privacy-policy/">Privacy Policy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/disclaimer/">Disclaimer</a>
+      <p>© 2026 Himanshu Joshi. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
