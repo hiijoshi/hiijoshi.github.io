@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>How I Added Sitemap and Robots.txt to My Portfolio Website</title>
+  <meta name="description" content="A practical guide on adding sitemap.xml and robots.txt to a GitHub Pages or Vite portfolio website for better search engine crawling." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hiijoshi.in/blog/sitemap-robots-github-pages/" />
+
+  <style>
+    body{font-family:Arial,sans-serif;margin:0;background:#f7f7f7;color:#111;line-height:1.8}
+    header,footer{background:#111;color:white;padding:22px 20px}
+    header div,main,footer div{max-width:900px;margin:auto}
+    nav a,footer a{color:white;margin-right:14px;text-decoration:none}
+    main{background:white;padding:40px 24px;margin-top:30px;margin-bottom:30px;border-radius:14px;border:1px solid #ddd}
+    h1{line-height:1.3}.meta{color:#666;font-size:14px}code{background:#f1f1f1;padding:2px 6px;border-radius:5px}a{color:#005bea}
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h2>Himanshu Joshi</h2>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/tools/">Tools</a>
+        <a href="/services/">Services</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <p><a href="/blog/">← Back to Blog</a></p>
+
+    <h1>How I Added Sitemap and Robots.txt to My Portfolio Website</h1>
+    <p class="meta">Published on June 7, 2026 by Himanshu Joshi</p>
+
+    <p>
+      When I started improving my portfolio website for search engines, I understood that only creating pages is not enough.
+      Search engines also need a clear path to discover those pages. That is where sitemap.xml and robots.txt become useful.
+    </p>
+
+    <p>
+      My website was built using Vite and hosted as a static website. In this setup, the easiest way to add sitemap and robots
+      files was to place them inside the public folder.
+    </p>
+
+    <h2>What Is Sitemap.xml?</h2>
+
+    <p>
+      A sitemap.xml file is a list of important website URLs. It helps search engines discover pages such as the homepage,
+      blog page, tools page, services page, contact page, and individual blog articles.
+    </p>
+
+    <p>
+      For a growing website, sitemap becomes very helpful because every new blog article can be added to it. After updating
+      the sitemap, it can be submitted in Google Search Console.
+    </p>
+
+    <h2>What Is Robots.txt?</h2>
+
+    <p>
+      Robots.txt is a simple text file that gives crawling instructions to search engines. For my website, I wanted search
+      engines to crawl all public pages. So I used a simple robots.txt file that allowed all pages and pointed to the sitemap.
+    </p>
+
+    <p>
+      The file was placed at:
+    </p>
+
+    <p><code>public/robots.txt</code></p>
+
+    <h2>Where I Added These Files</h2>
+
+    <p>
+      In a Vite project, files inside the public folder are copied to the root of the final website. That means if I create
+      public/sitemap.xml, it becomes available at /sitemap.xml on the live domain.
+    </p>
+
+    <p>
+      My final files were:
+    </p>
+
+    <ul>
+      <li><code>public/sitemap.xml</code></li>
+      <li><code>public/robots.txt</code></li>
+    </ul>
+
+    <h2>Why This Helped</h2>
+
+    <p>
+      After adding these files, I submitted the sitemap in Google Search Console. Google successfully read the sitemap and
+      discovered my pages. This gave me confidence that the website structure was correct.
+    </p>
+
+    <p>
+      It does not mean Google will index every page immediately, but it makes discovery easier and more organized.
+    </p>
+
+    <h2>My Sitemap Strategy</h2>
+
+    <p>
+      I included only real pages in the sitemap. I avoided adding broken links, empty pages, or coming soon pages. This is
+      important because a sitemap should represent useful and accessible pages.
+    </p>
+
+    <p>
+      Every time I publish a new blog article, I update the sitemap by adding the new article URL.
+    </p>
+
+    <h2>Conclusion</h2>
+
+    <p>
+      Adding sitemap.xml and robots.txt is a small task, but it improves the technical foundation of a website. For a portfolio
+      website that is becoming a blog and content website, these files are important for SEO and Google Search Console setup.
+    </p>
+  </main>
+
+  <footer>
+    <div>
+      <a href="/privacy-policy/">Privacy Policy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/disclaimer/">Disclaimer</a>
+      <p>© 2026 Himanshu Joshi</p>
+    </div>
+  </footer>
+</body>
+</html>

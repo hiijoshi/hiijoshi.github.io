@@ -45,6 +45,10 @@
       font-size: 15px;
     }
 
+    nav a:hover {
+      text-decoration: underline;
+    }
+
     main {
       padding: 40px 20px;
     }
@@ -58,24 +62,32 @@
     }
 
     .post {
+      margin-bottom: 22px;
+    }
+
+    .post-card {
+      display: block;
       background: #fff;
       padding: 26px;
       border-radius: 14px;
       border: 1px solid #ddd;
-      margin-bottom: 22px;
+      text-decoration: none;
+      color: #111;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .post-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     }
 
     .post h2 {
       margin-top: 0;
       margin-bottom: 10px;
-    }
-
-    .post a {
       color: #005bea;
-      text-decoration: none;
     }
 
-    .post a:hover {
+    .post-card:hover h2 {
       text-decoration: underline;
     }
 
@@ -93,6 +105,7 @@
     .date {
       color: #666;
       font-size: 14px;
+      margin-top: 0;
     }
 
     footer {
@@ -106,6 +119,10 @@
       color: #fff;
       margin-right: 12px;
       text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -141,67 +158,73 @@
     </section>
 
     <article class="post">
-      <p class="date">Published: June 7, 2026</p>
-      <h2>
-        <a href="/blog/adsense-ready-portfolio-website/">
-          How I Made My Portfolio Website Ready for Google AdSense
-        </a>
-      </h2>
-      <p>
-        In this article, I explain how I converted my portfolio website into a more complete website
-        with blog, tools, services, about, contact, privacy policy, terms, disclaimer, sitemap, and robots.txt.
-      </p>
-      <span class="tag">AdSense</span>
-      <span class="tag">Portfolio</span>
-      <span class="tag">SEO</span>
+      <a class="post-card" href="/blog/adsense-ready-portfolio-website/">
+        <p class="date">Published: June 7, 2026</p>
+        <h2>How I Made My Portfolio Website Ready for Google AdSense</h2>
+        <p>
+          In this article, I explain how I converted my portfolio website into a more complete website
+          with blog, tools, services, about, contact, privacy policy, terms, disclaimer, sitemap, and robots.txt.
+        </p>
+        <span class="tag">AdSense</span>
+        <span class="tag">Portfolio</span>
+        <span class="tag">SEO</span>
+      </a>
     </article>
 
     <article class="post">
-      <p class="date">Coming Soon</p>
-      <h2>
-        <a href="/blog/aws-lightsail-nextjs-deployment/">
-          How I Deployed a Next.js App on AWS Lightsail with Nginx and SSL
-        </a>
-      </h2>
-      <p>
-        A practical deployment guide based on my own production project experience using AWS Lightsail,
-        PM2, Nginx reverse proxy, custom domain, and SSL certificate.
-      </p>
-      <span class="tag">AWS</span>
-      <span class="tag">Deployment</span>
-      <span class="tag">Next.js</span>
+      <a class="post-card" href="/blog/aws-lightsail-nextjs-deployment/">
+        <p class="date">Published: June 7, 2026</p>
+        <h2>How I Deployed a Next.js App on AWS Lightsail with Nginx and SSL</h2>
+        <p>
+          A practical deployment guide based on my own production project experience using AWS Lightsail,
+          PM2, Nginx reverse proxy, custom domain, and SSL certificate.
+        </p>
+        <span class="tag">AWS</span>
+        <span class="tag">Deployment</span>
+        <span class="tag">Next.js</span>
+      </a>
     </article>
 
     <article class="post">
-      <p class="date">Coming Soon</p>
-      <h2>
-        <a href="/blog/google-search-console-canonical-fix/">
-          How I Fixed Google Search Console Duplicate Canonical Issues
-        </a>
-      </h2>
-      <p>
-        A real case study about fixing duplicate canonical problems, sitemap submission,
-        redirects, and indexing issues in Google Search Console.
-      </p>
-      <span class="tag">Google Search Console</span>
-      <span class="tag">SEO</span>
-      <span class="tag">Indexing</span>
+      <a class="post-card" href="/blog/google-search-console-canonical-fix/">
+        <p class="date">Published: June 7, 2026</p>
+        <h2>How I Fixed Google Search Console Duplicate Canonical Issues</h2>
+        <p>
+          A real case study about fixing duplicate canonical problems, sitemap submission,
+          redirects, and indexing issues in Google Search Console.
+        </p>
+        <span class="tag">Google Search Console</span>
+        <span class="tag">SEO</span>
+        <span class="tag">Indexing</span>
+      </a>
     </article>
 
     <article class="post">
-      <p class="date">Coming Soon</p>
-      <h2>
-        <a href="/blog/mandicentral-case-study/">
-          MandiCentral Case Study: Building a Business Operations Platform
-        </a>
-      </h2>
-      <p>
-        A project case study explaining how I worked on billing, ledger, PDF generation,
-        APIs, accounting reports, and real business software features.
-      </p>
-      <span class="tag">Case Study</span>
-      <span class="tag">Business Software</span>
-      <span class="tag">Full Stack</span>
+      <a class="post-card" href="/blog/sitemap-robots-github-pages/">
+        <p class="date">Published: June 7, 2026</p>
+        <h2>How I Added Sitemap and Robots.txt to My Portfolio Website</h2>
+        <p>
+          A practical guide on adding sitemap.xml and robots.txt in a GitHub Pages or Vite website
+          and submitting sitemap in Google Search Console.
+        </p>
+        <span class="tag">Sitemap</span>
+        <span class="tag">Robots.txt</span>
+        <span class="tag">SEO</span>
+      </a>
+    </article>
+
+    <article class="post">
+      <a class="post-card" href="/blog/connect-domain-vercel-dns/">
+        <p class="date">Published: June 7, 2026</p>
+        <h2>How I Connected hiijoshi.in Domain with Vercel DNS</h2>
+        <p>
+          A practical article about connecting a custom domain, understanding nameservers,
+          adding DNS records, and verifying the domain in Google Search Console.
+        </p>
+        <span class="tag">Vercel</span>
+        <span class="tag">DNS</span>
+        <span class="tag">Domain</span>
+      </a>
     </article>
   </main>
 

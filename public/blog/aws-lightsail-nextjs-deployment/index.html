@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>How I Deployed a Next.js App on AWS Lightsail with Nginx and SSL</title>
+  <meta
+    name="description"
+    content="A practical guide based on my experience deploying a Next.js app on AWS Lightsail using PM2, Nginx reverse proxy, custom domain and SSL certificate."
+  />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hiijoshi.in/blog/aws-lightsail-nextjs-deployment/" />
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f7f7f7;
+      color: #111;
+      line-height: 1.8;
+    }
+
+    header, footer {
+      background: #111;
+      color: white;
+      padding: 22px 20px;
+    }
+
+    header div, main, footer div {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    nav a, footer a {
+      color: white;
+      margin-right: 14px;
+      text-decoration: none;
+    }
+
+    main {
+      background: white;
+      padding: 40px 24px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      border-radius: 14px;
+      border: 1px solid #ddd;
+    }
+
+    h1 {
+      line-height: 1.3;
+    }
+
+    h2 {
+      margin-top: 34px;
+    }
+
+    .meta {
+      color: #666;
+      font-size: 14px;
+    }
+
+    code {
+      background: #f1f1f1;
+      padding: 2px 6px;
+      border-radius: 5px;
+    }
+
+    pre {
+      background: #111;
+      color: white;
+      padding: 18px;
+      overflow-x: auto;
+      border-radius: 10px;
+    }
+
+    a {
+      color: #005bea;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div>
+      <h2>Himanshu Joshi</h2>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/tools/">Tools</a>
+        <a href="/services/">Services</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <p><a href="/blog/">← Back to Blog</a></p>
+
+    <h1>How I Deployed a Next.js App on AWS Lightsail with Nginx and SSL</h1>
+    <p class="meta">Published on June 7, 2026 by Himanshu Joshi</p>
+
+    <p>
+      Deploying a web application is one of the most important parts of real project development.
+      Building an app locally is only half of the work. The real challenge starts when the project
+      needs to run online with a custom domain, HTTPS, proper server setup, and stable performance.
+    </p>
+
+    <p>
+      In one of my projects, I worked on deploying a Next.js application on AWS Lightsail. The setup
+      included Node.js, PM2, Nginx reverse proxy, domain connection, and SSL certificate using Certbot.
+      This article explains the practical flow I followed and the things I learned during the deployment.
+    </p>
+
+    <h2>Why I Used AWS Lightsail</h2>
+
+    <p>
+      AWS Lightsail is useful for small and medium projects because it gives a simple virtual server
+      with predictable pricing. Instead of managing many cloud services separately, Lightsail gives
+      a direct server where we can install Node.js, run the app, configure Nginx, and connect a domain.
+    </p>
+
+    <p>
+      For my project, I wanted a setup where the web app could run continuously and users could access
+      it through a proper domain with HTTPS. Lightsail was a good choice for this requirement.
+    </p>
+
+    <h2>Basic Deployment Flow</h2>
+
+    <p>
+      The deployment process followed this simple flow:
+    </p>
+
+    <ul>
+      <li>Create AWS Lightsail instance</li>
+      <li>Install Node.js and npm</li>
+      <li>Upload or clone project code</li>
+      <li>Install project dependencies</li>
+      <li>Build the Next.js app</li>
+      <li>Run the app using PM2</li>
+      <li>Configure Nginx as reverse proxy</li>
+      <li>Point domain to server IP</li>
+      <li>Add SSL using Certbot</li>
+    </ul>
+
+    <h2>Installing Project Dependencies</h2>
+
+    <p>
+      After moving the project to the server, the first step was to install dependencies. This is
+      usually done using npm.
+    </p>
+
+    <pre><code>npm install</code></pre>
+
+    <p>
+      After installation, I created a production build.
+    </p>
+
+    <pre><code>npm run build</code></pre>
+
+    <p>
+      If the build fails, it usually means there is a TypeScript error, environment variable issue,
+      missing package, or memory problem. In production deployment, fixing build errors is very important.
+    </p>
+
+    <h2>Running the App with PM2</h2>
+
+    <p>
+      PM2 helps keep the Node.js app running in the background. If the server restarts or the app crashes,
+      PM2 can restart it automatically.
+    </p>
+
+    <pre><code>pm2 start npm --name "my-app" -- start</code></pre>
+
+    <p>
+      After starting the app, I checked whether it was running properly.
+    </p>
+
+    <pre><code>pm2 status</code></pre>
+
+    <p>
+      This step is important because the app should not depend on an open terminal session.
+      PM2 makes the app production-ready.
+    </p>
+
+    <h2>Configuring Nginx Reverse Proxy</h2>
+
+    <p>
+      Next.js usually runs on a port like <code>3000</code>. But users should not access the site
+      using a port number. They should access it using the domain name. For this, I used Nginx as a
+      reverse proxy.
+    </p>
+
+    <p>
+      Nginx receives traffic from the domain and sends it internally to the running Next.js app.
+      This makes the website accessible through a clean domain.
+    </p>
+
+    <h2>Connecting the Domain</h2>
+
+    <p>
+      After the app was running on the server, I connected the domain by updating DNS records.
+      The main record required is usually an A record that points the domain to the server's public IP address.
+    </p>
+
+    <p>
+      DNS changes can take some time to update. Sometimes it works in a few minutes, and sometimes it
+      takes longer depending on the domain provider and DNS propagation.
+    </p>
+
+    <h2>Adding SSL with Certbot</h2>
+
+    <p>
+      SSL is required to make the website secure and accessible through HTTPS. For this, I used Certbot
+      with Nginx. After SSL setup, the website started opening with HTTPS.
+    </p>
+
+    <p>
+      HTTPS is important because users trust secure websites more. It is also important for modern web
+      apps, SEO, and browser compatibility.
+    </p>
+
+    <h2>Problems I Faced</h2>
+
+    <p>
+      During deployment, some common problems came up. These included build errors, server memory issues,
+      Nginx configuration mistakes, and domain DNS delays. These problems are normal in real deployments.
+    </p>
+
+    <p>
+      The best way to solve them is to check logs carefully. PM2 logs and Nginx logs are very helpful
+      for understanding what is going wrong.
+    </p>
+
+    <pre><code>pm2 logs</code></pre>
+
+    <h2>What I Learned</h2>
+
+    <p>
+      This deployment taught me that production setup is different from local development. Locally,
+      a project may work fine, but on a server, we need to think about build process, environment variables,
+      ports, reverse proxy, SSL, domain, and monitoring.
+    </p>
+
+    <p>
+      I also learned that a stable deployment requires patience. Every error gives useful information,
+      and checking logs is one of the most important skills for a developer.
+    </p>
+
+    <h2>Conclusion</h2>
+
+    <p>
+      Deploying a Next.js app on AWS Lightsail gave me practical experience with real server management.
+      I used PM2 to keep the app running, Nginx to connect the app with the domain, and Certbot to enable HTTPS.
+    </p>
+
+    <p>
+      This setup is useful for developers who want to deploy real projects without depending only on
+      managed hosting platforms. It gives more control and helps understand how production web apps
+      actually run.
+    </p>
+  </main>
+
+  <footer>
+    <div>
+      <a href="/privacy-policy/">Privacy Policy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/disclaimer/">Disclaimer</a>
+      <p>© 2026 Himanshu Joshi</p>
+    </div>
+  </footer>
+</body>
+</html>

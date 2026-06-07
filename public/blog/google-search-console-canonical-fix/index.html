@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>How I Fixed Google Search Console Duplicate Canonical Issues</title>
+  <meta name="description" content="A practical case study on how I fixed duplicate canonical issues in Google Search Console using redirects, sitemap and correct URL structure." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hiijoshi.in/blog/google-search-console-canonical-fix/" />
+
+  <style>
+    body{font-family:Arial,sans-serif;margin:0;background:#f7f7f7;color:#111;line-height:1.8}
+    header,footer{background:#111;color:white;padding:22px 20px}
+    header div,main,footer div{max-width:900px;margin:auto}
+    nav a,footer a{color:white;margin-right:14px;text-decoration:none}
+    main{background:white;padding:40px 24px;margin-top:30px;margin-bottom:30px;border-radius:14px;border:1px solid #ddd}
+    h1{line-height:1.3}.meta{color:#666;font-size:14px}a{color:#005bea}
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h2>Himanshu Joshi</h2>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/tools/">Tools</a>
+        <a href="/services/">Services</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <p><a href="/blog/">← Back to Blog</a></p>
+
+    <h1>How I Fixed Google Search Console Duplicate Canonical Issues</h1>
+    <p class="meta">Published on June 7, 2026 by Himanshu Joshi</p>
+
+    <p>
+      Google Search Console is very useful for understanding how Google sees a website. While working on my website,
+      I noticed that some URLs were showing duplicate canonical issues. This means Google found more than one URL
+      showing similar or same content, and it was not sure which URL should be treated as the main version.
+    </p>
+
+    <p>
+      This issue can happen when the same page opens from different URLs. For example, a homepage may open from
+      the root URL, a landing page URL, or an index.html URL. If these URLs show the same content without proper
+      redirect or canonical setup, Google may mark them as duplicate.
+    </p>
+
+    <h2>What Was the Problem?</h2>
+
+    <p>
+      The main problem was that different versions of a page were accessible. Search engines prefer one clean
+      version of a page. If multiple URLs show the same page, indexing can become confusing.
+    </p>
+
+    <p>
+      In my case, I checked the affected URL in Google Search Console and saw that Google had selected a different
+      canonical URL. That meant I needed to make the website structure cleaner.
+    </p>
+
+    <h2>How I Fixed It</h2>
+
+    <p>
+      First, I decided which URL should be the main page. For the homepage, the correct version was the root domain.
+      Then I made sure duplicate URLs redirected to the correct URL. Redirects are important because they tell both
+      users and search engines where the main page is.
+    </p>
+
+    <p>
+      After that, I checked the sitemap. A sitemap should only include important and correct URLs. It should not
+      include duplicate or temporary URLs. I updated the sitemap and submitted it again in Google Search Console.
+    </p>
+
+    <h2>Why Canonical URLs Matter</h2>
+
+    <p>
+      Canonical URLs help search engines understand the main version of a page. This is useful when similar content
+      exists on different URLs. A correct canonical setup improves crawling and reduces duplicate indexing problems.
+    </p>
+
+    <p>
+      For small websites, the best approach is to keep the URL structure simple. Each important page should have
+      one clear URL, and duplicate versions should redirect to that main URL.
+    </p>
+
+    <h2>What I Learned</h2>
+
+    <p>
+      I learned that SEO is not only about writing content. Technical setup is also important. A website should have
+      clean URLs, proper redirects, sitemap, robots.txt, and working pages without broken links.
+    </p>
+
+    <p>
+      After fixing the issue, I used URL Inspection in Google Search Console and requested indexing again. This helped
+      Google recheck the updated pages.
+    </p>
+
+    <h2>Conclusion</h2>
+
+    <p>
+      Duplicate canonical issues are common, but they can be fixed with a clean URL structure, correct redirects,
+      proper sitemap, and Google Search Console inspection. This experience helped me understand how important
+      technical SEO is for any website.
+    </p>
+  </main>
+
+  <footer>
+    <div>
+      <a href="/privacy-policy/">Privacy Policy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/disclaimer/">Disclaimer</a>
+      <p>© 2026 Himanshu Joshi</p>
+    </div>
+  </footer>
+</body>
+</html>
