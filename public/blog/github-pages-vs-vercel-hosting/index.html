@@ -1,0 +1,441 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>GitHub Pages vs Vercel: My Experience Hosting Websites</title>
+  <meta
+    name="description"
+    content="A practical comparison of GitHub Pages and Vercel based on my experience hosting portfolio websites, static pages, React apps, custom domains and project deployments."
+  />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hiijoshi.in/blog/github-pages-vs-vercel-hosting/" />
+
+  <meta property="og:title" content="GitHub Pages vs Vercel: My Experience Hosting Websites" />
+  <meta
+    property="og:description"
+    content="My practical experience comparing GitHub Pages and Vercel for hosting portfolio websites, React apps, static pages and custom domains."
+  />
+  <meta property="og:url" content="https://hiijoshi.in/blog/github-pages-vs-vercel-hosting/" />
+  <meta property="og:type" content="article" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "GitHub Pages vs Vercel: My Experience Hosting Websites",
+    "description": "A practical comparison of GitHub Pages and Vercel based on my experience hosting portfolio websites, static pages, React apps, custom domains and project deployments.",
+    "author": {
+      "@type": "Person",
+      "name": "Himanshu Joshi"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Himanshu Joshi"
+    },
+    "datePublished": "2026-06-07",
+    "dateModified": "2026-06-07",
+    "mainEntityOfPage": "https://hiijoshi.in/blog/github-pages-vs-vercel-hosting/"
+  }
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f7f7f7;
+      color: #111;
+      line-height: 1.8;
+    }
+
+    header,
+    footer {
+      background: #111;
+      color: white;
+      padding: 22px 20px;
+    }
+
+    header div,
+    main,
+    footer div {
+      max-width: 920px;
+      margin: auto;
+    }
+
+    nav {
+      margin-top: 12px;
+    }
+
+    nav a,
+    footer a {
+      color: white;
+      margin-right: 14px;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    nav a:hover,
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      background: white;
+      padding: 42px 26px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      border-radius: 14px;
+      border: 1px solid #ddd;
+    }
+
+    h1 {
+      line-height: 1.3;
+      font-size: 34px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin-top: 38px;
+      line-height: 1.35;
+    }
+
+    h3 {
+      margin-top: 26px;
+    }
+
+    .meta {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 26px;
+    }
+
+    .summary {
+      background: #f1f5ff;
+      border-left: 4px solid #1d4ed8;
+      padding: 18px 20px;
+      border-radius: 10px;
+      margin: 26px 0;
+    }
+
+    .note {
+      background: #fff8e6;
+      border-left: 4px solid #f59e0b;
+      padding: 16px 18px;
+      border-radius: 10px;
+      margin: 24px 0;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #eef3ff;
+      color: #1d4ed8;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-right: 6px;
+      margin-top: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 15px;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f1f5ff;
+    }
+
+    code {
+      background: #f1f1f1;
+      padding: 2px 6px;
+      border-radius: 5px;
+    }
+
+    a {
+      color: #005bea;
+    }
+
+    ul {
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 700px) {
+      table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div>
+      <h2>Himanshu Joshi</h2>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/tools/">Tools</a>
+        <a href="/services/">Services</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <p><a href="/blog/">← Back to Blog</a></p>
+
+    <h1>GitHub Pages vs Vercel: My Experience Hosting Websites</h1>
+    <p class="meta">Published on June 7, 2026 by Himanshu Joshi</p>
+
+    <span class="tag">GitHub Pages</span>
+    <span class="tag">Vercel</span>
+    <span class="tag">Hosting</span>
+    <span class="tag">Deployment</span>
+
+    <div class="summary">
+      <strong>Summary:</strong>
+      In this article, I compare GitHub Pages and Vercel from my own hosting experience.
+      I used these platforms while working on portfolio websites, static pages, React apps, custom domains,
+      and simple deployment workflows. This comparison is based on practical usage, not only theory.
+    </div>
+
+    <p>
+      When I started publishing my projects online, I explored different hosting options. Two platforms that became useful
+      for me were GitHub Pages and Vercel. Both are popular, both are useful, but they are not exactly the same.
+    </p>
+
+    <p>
+      GitHub Pages is simple and works well for static websites. Vercel is more powerful for modern frontend frameworks,
+      automatic deployments, preview builds, and custom domain management. After using both, I understood where each platform
+      fits better.
+    </p>
+
+    <h2>Why Hosting Choice Matters</h2>
+
+    <p>
+      A project is not complete until people can open it online. Hosting is the step that makes a project public.
+      For a student, developer, or freelancer, hosting choice affects speed, setup time, domain connection, updates,
+      and long-term maintenance.
+    </p>
+
+    <p>
+      A good hosting platform should make deployment simple. It should also make updates easy because websites are rarely
+      finished in one attempt. We keep changing content, fixing bugs, adding pages, and improving SEO.
+    </p>
+
+    <h2>What I Used GitHub Pages For</h2>
+
+    <p>
+      I used GitHub Pages for portfolio-style websites and static content. It works well when the project is mostly HTML,
+      CSS, JavaScript, or a static build generated from tools like Vite.
+    </p>
+
+    <p>
+      For example, if my project has a <code>public</code> folder, static HTML pages, sitemap, robots.txt, and simple blog pages,
+      GitHub Pages can serve them properly after build.
+    </p>
+
+    <p>
+      GitHub Pages is good for:
+    </p>
+
+    <ul>
+      <li>Personal portfolio websites</li>
+      <li>Static HTML pages</li>
+      <li>Documentation pages</li>
+      <li>Simple project landing pages</li>
+      <li>Student projects</li>
+      <li>Basic blogs without backend</li>
+    </ul>
+
+    <h2>What I Used Vercel For</h2>
+
+    <p>
+      Vercel felt more comfortable for modern frontend projects and domain management. It connects with GitHub repositories,
+      deploys automatically after push, and provides a clean dashboard for domains.
+    </p>
+
+    <p>
+      I also used Vercel DNS for domain-related work. One important thing I learned was that DNS records should be added
+      where the active nameservers are managed. If a domain is using Vercel nameservers, then DNS records like TXT verification
+      records should be added inside Vercel.
+    </p>
+
+    <p>
+      Vercel is good for:
+    </p>
+
+    <ul>
+      <li>Next.js projects</li>
+      <li>React frontend projects</li>
+      <li>Automatic deployments from GitHub</li>
+      <li>Preview deployments</li>
+      <li>Custom domain setup</li>
+      <li>Projects that may grow later</li>
+    </ul>
+
+    <h2>Simple Comparison</h2>
+
+    <table>
+      <tr>
+        <th>Point</th>
+        <th>GitHub Pages</th>
+        <th>Vercel</th>
+      </tr>
+      <tr>
+        <td>Best for</td>
+        <td>Static websites and portfolios</td>
+        <td>Modern frontend apps and Next.js projects</td>
+      </tr>
+      <tr>
+        <td>Setup</td>
+        <td>Simple for static websites</td>
+        <td>Simple with GitHub integration</td>
+      </tr>
+      <tr>
+        <td>Custom domain</td>
+        <td>Supported</td>
+        <td>Very smooth dashboard experience</td>
+      </tr>
+      <tr>
+        <td>Backend support</td>
+        <td>Not suitable for backend apps</td>
+        <td>Better for modern app workflows</td>
+      </tr>
+      <tr>
+        <td>Preview deployments</td>
+        <td>Not the main focus</td>
+        <td>Very useful for testing changes</td>
+      </tr>
+      <tr>
+        <td>My use case</td>
+        <td>Portfolio and static blog pages</td>
+        <td>Domain, frontend deployment, and project hosting</td>
+      </tr>
+    </table>
+
+    <h2>Where GitHub Pages Is Better</h2>
+
+    <p>
+      GitHub Pages is very useful when the website is simple and static. If the goal is to publish a portfolio, project page,
+      or documentation website, it can be enough.
+    </p>
+
+    <p>
+      The biggest advantage is simplicity. The code is already on GitHub, and the website can be published from the repository.
+      For a student or beginner, this is a good starting point.
+    </p>
+
+    <p>
+      I also like that static files such as <code>sitemap.xml</code>, <code>robots.txt</code>, and HTML blog pages can be managed
+      directly in the repository.
+    </p>
+
+    <h2>Where Vercel Is Better</h2>
+
+    <p>
+      Vercel feels better when the project is a modern web app or when I want an easier deployment workflow.
+      It is especially useful for Next.js and React projects.
+    </p>
+
+    <p>
+      The dashboard makes it easier to connect domains and manage DNS. Preview deployments are also useful because changes
+      can be tested before final production usage.
+    </p>
+
+    <p>
+      If a project is expected to grow, Vercel can feel more flexible than a basic static hosting setup.
+    </p>
+
+    <h2>My Practical Learning About DNS</h2>
+
+    <p>
+      One of the biggest practical learnings was about nameservers. Buying a domain from one company does not always mean
+      DNS is managed there. If the nameservers point to Vercel, then DNS records must be added in Vercel.
+    </p>
+
+    <p>
+      This became important when verifying a domain in Google Search Console. Google gave a TXT record, and the correct place
+      to add that record was the active DNS provider.
+    </p>
+
+    <div class="note">
+      <strong>Important learning:</strong>
+      Always check active nameservers before adding DNS records. Otherwise, you may add records in the wrong dashboard and verification will fail.
+    </div>
+
+    <h2>Which One Should a Beginner Use?</h2>
+
+    <p>
+      If someone is building a simple HTML, CSS, JavaScript, or static portfolio website, GitHub Pages is a good choice.
+      It is simple, direct, and connected with GitHub.
+    </p>
+
+    <p>
+      If someone is building a Next.js app, React project, or wants smoother deployments and previews, Vercel is a better choice.
+    </p>
+
+    <p>
+      My simple suggestion is:
+    </p>
+
+    <ul>
+      <li>Use GitHub Pages for simple static portfolio and documentation websites.</li>
+      <li>Use Vercel for modern frontend apps and projects that may grow.</li>
+      <li>Use a VPS or cloud server when the project needs backend, database, custom server setup, or full control.</li>
+    </ul>
+
+    <h2>What I Learned</h2>
+
+    <p>
+      Hosting taught me that deployment is part of development. A project that only works locally is not enough.
+      The real value comes when users can open it online through a proper domain.
+    </p>
+
+    <p>
+      I also learned that there is no single best platform for every project. The best choice depends on the project type,
+      technical requirement, and future plan.
+    </p>
+
+    <h2>Conclusion</h2>
+
+    <p>
+      GitHub Pages and Vercel are both useful, but they solve slightly different problems. GitHub Pages is great for static
+      websites, while Vercel is better for modern frontend projects and smooth deployment workflows.
+    </p>
+
+    <p>
+      In my own work, I use the platform based on the project requirement. For simple static pages, GitHub Pages is enough.
+      For modern apps and domain-friendly workflows, Vercel feels better.
+    </p>
+  </main>
+
+  <footer>
+    <div>
+      <a href="/privacy-policy/">Privacy Policy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/disclaimer/">Disclaimer</a>
+      <p>© 2026 Himanshu Joshi. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
+```
