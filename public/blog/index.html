@@ -7,10 +7,18 @@
   <title>Blog - Himanshu Joshi</title>
   <meta
     name="description"
-    content="Read practical blogs by Himanshu Joshi on web development, deployment, SEO, Google Search Console, AdSense, GitHub Pages, AWS Lightsail, and real project case studies."
+    content="Read practical blogs by Himanshu Joshi on web development, deployment, SEO, Google Search Console, AdSense, GitHub Pages, AWS Lightsail, Nginx, PM2 and real project case studies."
   />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://hiijoshi.in/blog/" />
+
+  <meta property="og:title" content="Blog - Himanshu Joshi" />
+  <meta
+    property="og:description"
+    content="Practical blogs on web development, deployment, SEO, Google Search Console, AdSense preparation, AWS Lightsail, Nginx, PM2 and real project case studies."
+  />
+  <meta property="og:url" content="https://hiijoshi.in/blog/" />
+  <meta property="og:type" content="website" />
 
   <style>
     body {
@@ -61,6 +69,16 @@
       margin-bottom: 28px;
     }
 
+    .intro h2 {
+      margin-top: 0;
+    }
+
+    .blog-count {
+      color: #555;
+      font-size: 15px;
+      margin-top: 8px;
+    }
+
     .post {
       margin-bottom: 22px;
     }
@@ -85,10 +103,15 @@
       margin-top: 0;
       margin-bottom: 10px;
       color: #005bea;
+      line-height: 1.35;
     }
 
     .post-card:hover h2 {
       text-decoration: underline;
+    }
+
+    .post p {
+      margin-bottom: 12px;
     }
 
     .tag {
@@ -124,6 +147,26 @@
     footer a:hover {
       text-decoration: underline;
     }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 20px 16px;
+      }
+
+      main {
+        padding: 28px 16px;
+      }
+
+      .intro,
+      .post-card {
+        padding: 20px;
+      }
+
+      nav a {
+        display: inline-block;
+        margin-bottom: 8px;
+      }
+    }
   </style>
 </head>
 
@@ -148,13 +191,15 @@
     <section class="intro">
       <h2>Developer Blog and Project Notes</h2>
       <p>
-        This blog is where I share real practical articles from my own experience.
+        This blog is where I share practical articles from my own experience.
         I write about website development, deployment, Google Search Console,
-        AdSense preparation, GitHub Pages, AWS Lightsail, SEO fixes, and real project case studies.
+        AdSense preparation, GitHub Pages, AWS Lightsail, Nginx, PM2, SEO fixes,
+        and real project case studies.
       </p>
       <p>
-        My aim is to keep every article simple, useful, and based on actual work instead of only theory.
+        My aim is to keep every article useful, simple, and based on actual work instead of only theory.
       </p>
+      <p class="blog-count">Total published articles: 10</p>
     </section>
 
     <article class="post">
@@ -162,8 +207,8 @@
         <p class="date">Published: June 7, 2026</p>
         <h2>How I Made My Portfolio Website Ready for Google AdSense</h2>
         <p>
-          In this article, I explain how I converted my portfolio website into a more complete website
-          with blog, tools, services, about, contact, privacy policy, terms, disclaimer, sitemap, and robots.txt.
+          How I converted my portfolio website into a complete site with blog, tools,
+          services, policy pages, sitemap, robots.txt and better structure.
         </p>
         <span class="tag">AdSense</span>
         <span class="tag">Portfolio</span>
@@ -176,8 +221,8 @@
         <p class="date">Published: June 7, 2026</p>
         <h2>How I Deployed a Next.js App on AWS Lightsail with Nginx and SSL</h2>
         <p>
-          A practical deployment guide based on my own production project experience using AWS Lightsail,
-          PM2, Nginx reverse proxy, custom domain, and SSL certificate.
+          A practical deployment guide based on my production experience using AWS Lightsail,
+          PM2, Nginx, custom domain and SSL certificate.
         </p>
         <span class="tag">AWS</span>
         <span class="tag">Deployment</span>
@@ -190,8 +235,8 @@
         <p class="date">Published: June 7, 2026</p>
         <h2>How I Fixed Google Search Console Duplicate Canonical Issues</h2>
         <p>
-          A real case study about fixing duplicate canonical problems, sitemap submission,
-          redirects, and indexing issues in Google Search Console.
+          A real case study about fixing duplicate canonical problems, redirects,
+          sitemap submission and indexing issues.
         </p>
         <span class="tag">Google Search Console</span>
         <span class="tag">SEO</span>
@@ -219,11 +264,81 @@
         <h2>How I Connected hiijoshi.in Domain with Vercel DNS</h2>
         <p>
           A practical article about connecting a custom domain, understanding nameservers,
-          adding DNS records, and verifying the domain in Google Search Console.
+          adding DNS records and verifying the domain in Google Search Console.
         </p>
         <span class="tag">Vercel</span>
         <span class="tag">DNS</span>
         <span class="tag">Domain</span>
+      </a>
+    </article>
+
+    <article class="post">
+      <a class="post-card" href="/blog/mandicentral-case-study/">
+        <p class="date">Published: June 7, 2026</p>
+        <h2>MandiCentral Case Study: Building a Real Business Operations Platform</h2>
+        <p>
+          A detailed case study about MandiCentral, a business operations platform for mandi billing,
+          ledgers, reports, PDF generation, mobile APIs and production deployment.
+        </p>
+        <span class="tag">Case Study</span>
+        <span class="tag">Business Software</span>
+        <span class="tag">Full Stack</span>
+      </a>
+    </article>
+
+    <article class="post">
+      <a class="post-card" href="/blog/pm2-nodejs-production-setup/">
+        <p class="date">Published: June 7, 2026</p>
+        <h2>How I Used PM2 to Run a Node.js App in Production</h2>
+        <p>
+          My practical experience using PM2 for Node.js and Next.js production apps,
+          including logs, restart, startup and process management.
+        </p>
+        <span class="tag">PM2</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">Production</span>
+      </a>
+    </article>
+
+    <article class="post">
+      <a class="post-card" href="/blog/nginx-reverse-proxy-web-app/">
+        <p class="date">Published: June 7, 2026</p>
+        <h2>How I Configured Nginx Reverse Proxy for My Web App</h2>
+        <p>
+          A practical guide on connecting a custom domain with a web app running on an internal port
+          using Nginx reverse proxy.
+        </p>
+        <span class="tag">Nginx</span>
+        <span class="tag">Reverse Proxy</span>
+        <span class="tag">Deployment</span>
+      </a>
+    </article>
+
+    <article class="post">
+      <a class="post-card" href="/blog/fix-website-404-broken-links/">
+        <p class="date">Published: June 7, 2026</p>
+        <h2>How I Fixed Website 404 and Broken Link Issues</h2>
+        <p>
+          How I fixed broken links, removed coming soon URLs, updated navigation,
+          cleaned sitemap and improved website user experience.
+        </p>
+        <span class="tag">404 Fix</span>
+        <span class="tag">SEO</span>
+        <span class="tag">Website</span>
+      </a>
+    </article>
+
+    <article class="post">
+      <a class="post-card" href="/blog/google-search-console-sitemap-submission/">
+        <p class="date">Published: June 7, 2026</p>
+        <h2>How I Submitted My Sitemap in Google Search Console</h2>
+        <p>
+          A practical guide on creating sitemap.xml, submitting it in Google Search Console,
+          checking success and requesting indexing.
+        </p>
+        <span class="tag">Google Search Console</span>
+        <span class="tag">Sitemap</span>
+        <span class="tag">Indexing</span>
       </a>
     </article>
   </main>

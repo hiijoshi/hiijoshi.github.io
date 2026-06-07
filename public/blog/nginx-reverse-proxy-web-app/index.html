@@ -1,0 +1,467 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>How I Configured Nginx Reverse Proxy for My Web App</title>
+  <meta
+    name="description"
+    content="A detailed practical guide on configuring Nginx reverse proxy for a Node.js or Next.js web app running on an internal port with custom domain, HTTPS and production setup."
+  />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hiijoshi.in/blog/nginx-reverse-proxy-web-app/" />
+
+  <meta property="og:title" content="How I Configured Nginx Reverse Proxy for My Web App" />
+  <meta
+    property="og:description"
+    content="My practical experience configuring Nginx reverse proxy to connect a custom domain with a web app running on an internal server port."
+  />
+  <meta property="og:url" content="https://hiijoshi.in/blog/nginx-reverse-proxy-web-app/" />
+  <meta property="og:type" content="article" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How I Configured Nginx Reverse Proxy for My Web App",
+    "description": "A detailed practical guide on configuring Nginx reverse proxy for a Node.js or Next.js web app running on an internal port with custom domain, HTTPS and production setup.",
+    "author": {
+      "@type": "Person",
+      "name": "Himanshu Joshi"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Himanshu Joshi"
+    },
+    "datePublished": "2026-06-07",
+    "dateModified": "2026-06-07",
+    "mainEntityOfPage": "https://hiijoshi.in/blog/nginx-reverse-proxy-web-app/"
+  }
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f7f7f7;
+      color: #111;
+      line-height: 1.8;
+    }
+
+    header,
+    footer {
+      background: #111;
+      color: white;
+      padding: 22px 20px;
+    }
+
+    header div,
+    main,
+    footer div {
+      max-width: 920px;
+      margin: auto;
+    }
+
+    nav {
+      margin-top: 12px;
+    }
+
+    nav a,
+    footer a {
+      color: white;
+      margin-right: 14px;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    nav a:hover,
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      background: white;
+      padding: 42px 26px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      border-radius: 14px;
+      border: 1px solid #ddd;
+    }
+
+    h1 {
+      line-height: 1.3;
+      font-size: 34px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin-top: 38px;
+      line-height: 1.35;
+    }
+
+    h3 {
+      margin-top: 26px;
+    }
+
+    .meta {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 26px;
+    }
+
+    .summary {
+      background: #f1f5ff;
+      border-left: 4px solid #1d4ed8;
+      padding: 18px 20px;
+      border-radius: 10px;
+      margin: 26px 0;
+    }
+
+    .note {
+      background: #fff8e6;
+      border-left: 4px solid #f59e0b;
+      padding: 16px 18px;
+      border-radius: 10px;
+      margin: 24px 0;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #eef3ff;
+      color: #1d4ed8;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-right: 6px;
+      margin-top: 8px;
+    }
+
+    pre {
+      background: #111;
+      color: white;
+      padding: 18px;
+      overflow-x: auto;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    code {
+      background: #f1f1f1;
+      padding: 2px 6px;
+      border-radius: 5px;
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+      color: white;
+    }
+
+    a {
+      color: #005bea;
+    }
+
+    ul {
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div>
+      <h2>Himanshu Joshi</h2>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/tools/">Tools</a>
+        <a href="/services/">Services</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <p><a href="/blog/">← Back to Blog</a></p>
+
+    <h1>How I Configured Nginx Reverse Proxy for My Web App</h1>
+    <p class="meta">Published on June 7, 2026 by Himanshu Joshi</p>
+
+    <span class="tag">Nginx</span>
+    <span class="tag">Reverse Proxy</span>
+    <span class="tag">Deployment</span>
+    <span class="tag">Web Server</span>
+
+    <div class="summary">
+      <strong>Summary:</strong>
+      This article explains how I used Nginx as a reverse proxy for a web app running on an internal port.
+      I share the practical idea behind Nginx, why it is needed in production, how it connects a domain with an app,
+      and what problems I learned to debug during deployment.
+    </div>
+
+    <p>
+      When I deployed my web application on a server, the app was running internally on a port like <code>3000</code>.
+      This is common for Node.js, Next.js, Express, and many backend applications. But a real user should not open a website
+      using a port number. Users should visit a clean domain such as <code>example.com</code> or <code>www.example.com</code>.
+    </p>
+
+    <p>
+      To solve this, I used Nginx as a reverse proxy. Nginx receives requests from the public domain and forwards them to
+      the internal application port. This made the deployment cleaner, more professional, and easier to connect with HTTPS.
+    </p>
+
+    <h2>Why Reverse Proxy Is Needed</h2>
+
+    <p>
+      A web app running on a server usually listens on an internal port. For example, a Next.js app may run on
+      <code>localhost:3000</code>. This is fine for development or internal server communication, but it is not ideal for
+      public access.
+    </p>
+
+    <p>
+      A reverse proxy solves this problem by acting as a middle layer. Users send requests to the domain, Nginx receives
+      those requests, and then Nginx forwards them to the actual app running in the background.
+    </p>
+
+    <p>
+      This setup gives several benefits:
+    </p>
+
+    <ul>
+      <li>Users can access the app through a clean domain name.</li>
+      <li>The internal app port does not need to be exposed directly.</li>
+      <li>HTTPS setup becomes easier using Certbot and Nginx.</li>
+      <li>Multiple apps can run on one server using different domains or paths.</li>
+      <li>Nginx can handle public traffic more efficiently.</li>
+    </ul>
+
+    <h2>My Deployment Situation</h2>
+
+    <p>
+      In my setup, the application was running with PM2. PM2 kept the Node.js app alive in the background, and the app
+      listened on an internal port. But the domain needed to point to the app without showing the port number.
+    </p>
+
+    <p>
+      The flow looked like this:
+    </p>
+
+    <pre><code>User → Domain → Nginx → Node.js/Next.js App on Port 3000</code></pre>
+
+    <p>
+      This simple flow is the basic idea behind reverse proxy deployment.
+    </p>
+
+    <h2>Installing Nginx</h2>
+
+    <p>
+      On an Ubuntu server, Nginx can be installed using the package manager:
+    </p>
+
+    <pre><code>sudo apt update
+sudo apt install nginx</code></pre>
+
+    <p>
+      After installation, I checked whether Nginx was running:
+    </p>
+
+    <pre><code>sudo systemctl status nginx</code></pre>
+
+    <p>
+      If Nginx is active, it means the web server is running properly.
+    </p>
+
+    <h2>Basic Nginx Reverse Proxy Configuration</h2>
+
+    <p>
+      The main Nginx configuration idea is simple. A server block listens for requests on the domain and forwards them
+      to the local app port.
+    </p>
+
+    <pre><code>server {
+    listen 80;
+    server_name example.com www.example.com;
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}</code></pre>
+
+    <p>
+      In this example, users visit <code>example.com</code>, and Nginx sends the request to <code>localhost:3000</code>.
+      The user never sees port 3000 in the browser.
+    </p>
+
+    <div class="note">
+      <strong>Note:</strong>
+      The domain name and port should be changed according to the actual project. If the app runs on port 3001 or 5000,
+      the <code>proxy_pass</code> value should be updated.
+    </div>
+
+    <h2>Testing Nginx Configuration</h2>
+
+    <p>
+      After writing or editing the Nginx config, I tested it before restarting Nginx:
+    </p>
+
+    <pre><code>sudo nginx -t</code></pre>
+
+    <p>
+      This command checks whether the Nginx configuration has syntax errors. It is very important because a small mistake
+      can break the Nginx service.
+    </p>
+
+    <p>
+      If the test is successful, Nginx can be reloaded:
+    </p>
+
+    <pre><code>sudo systemctl reload nginx</code></pre>
+
+    <p>
+      Reloading is better than restarting in many cases because it applies changes without fully stopping the service.
+    </p>
+
+    <h2>Connecting Domain with Server</h2>
+
+    <p>
+      Nginx configuration alone is not enough. The domain DNS should also point to the server IP address. Usually, this is
+      done by adding an A record in the domain DNS settings.
+    </p>
+
+    <p>
+      The A record points the domain to the public IP of the server. After DNS propagation, the domain starts reaching the
+      server, and Nginx handles the request.
+    </p>
+
+    <p>
+      DNS changes can sometimes take time. If the domain does not work immediately, it does not always mean the configuration
+      is wrong. It may simply need time to update.
+    </p>
+
+    <h2>Adding HTTPS with Certbot</h2>
+
+    <p>
+      After the domain and Nginx configuration were working, the next important step was HTTPS. A production website should
+      open with a secure HTTPS connection.
+    </p>
+
+    <p>
+      Certbot can automatically configure SSL for Nginx:
+    </p>
+
+    <pre><code>sudo apt install certbot python3-certbot-nginx
+sudo certbot --nginx -d example.com -d www.example.com</code></pre>
+
+    <p>
+      After successful SSL setup, the website starts opening with HTTPS. This improves trust, browser compatibility, and SEO.
+    </p>
+
+    <h2>Common Problems I Faced</h2>
+
+    <p>
+      While working with Nginx reverse proxy, I faced some common issues. These issues helped me understand production debugging better.
+    </p>
+
+    <h3>1. App was not running</h3>
+
+    <p>
+      Sometimes Nginx was working, but the app behind it was not running. In that case, the website showed a bad gateway error.
+      The fix was to check PM2 status:
+    </p>
+
+    <pre><code>pm2 status
+pm2 logs</code></pre>
+
+    <h3>2. Wrong port in proxy_pass</h3>
+
+    <p>
+      If the app runs on port 3000 but Nginx forwards traffic to another port, the website will not work. The port in
+      <code>proxy_pass</code> should match the actual app port.
+    </p>
+
+    <h3>3. Nginx config syntax error</h3>
+
+    <p>
+      A missing semicolon or wrong bracket can break the configuration. That is why I always use:
+    </p>
+
+    <pre><code>sudo nginx -t</code></pre>
+
+    <h3>4. DNS not pointing correctly</h3>
+
+    <p>
+      Sometimes the domain does not reach the server because DNS records are wrong or not propagated yet. Checking DNS records
+      is important before assuming the server is broken.
+    </p>
+
+    <h3>5. SSL issue</h3>
+
+    <p>
+      Certbot needs the domain to correctly point to the server before SSL can be issued. If DNS is not correct, SSL setup may fail.
+    </p>
+
+    <h2>Useful Commands</h2>
+
+    <p>
+      These commands helped me manage Nginx:
+    </p>
+
+    <pre><code>sudo systemctl status nginx
+sudo nginx -t
+sudo systemctl reload nginx
+sudo systemctl restart nginx
+sudo systemctl stop nginx
+sudo systemctl start nginx</code></pre>
+
+    <p>
+      These commands are basic but very useful for deployment and debugging.
+    </p>
+
+    <h2>What I Learned</h2>
+
+    <p>
+      Nginx helped me understand how production web traffic works. Before using Nginx, I only thought about running the app.
+      But after configuring reverse proxy, I understood how domain, server, internal port, HTTPS, and process manager connect together.
+    </p>
+
+    <p>
+      I also learned that deployment issues are usually connected. If the site is not opening, the problem can be in DNS, Nginx,
+      PM2, app port, firewall, SSL, or the app itself. Debugging means checking each layer step by step.
+    </p>
+
+    <h2>Conclusion</h2>
+
+    <p>
+      Nginx reverse proxy is a very important part of production deployment. It allows a web app running on an internal port
+      to be accessed through a clean domain name. It also works well with PM2 and Certbot to create a stable deployment setup.
+    </p>
+
+    <p>
+      For my web app deployment, Nginx made the setup more professional and production-ready. It connected the domain with the
+      app, helped with HTTPS setup, and gave me a better understanding of how live web applications are served.
+    </p>
+  </main>
+
+  <footer>
+    <div>
+      <a href="/privacy-policy/">Privacy Policy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/disclaimer/">Disclaimer</a>
+      <p>© 2026 Himanshu Joshi. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
+```

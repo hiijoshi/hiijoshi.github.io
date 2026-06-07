@@ -1,0 +1,484 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>MandiCentral Case Study: Building a Real Business Operations Platform</title>
+  <meta
+    name="description"
+    content="A detailed case study about MandiCentral, a real business operations platform for mandi billing, ledgers, reports, PDF generation, mobile APIs, accounting workflows and production deployment."
+  />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hiijoshi.in/blog/mandicentral-case-study/" />
+
+  <meta property="og:title" content="MandiCentral Case Study: Building a Real Business Operations Platform" />
+  <meta
+    property="og:description"
+    content="How I worked on MandiCentral features including billing, ledgers, reports, PDF generation, mobile APIs, accounting workflows and production improvements."
+  />
+  <meta property="og:url" content="https://hiijoshi.in/blog/mandicentral-case-study/" />
+  <meta property="og:type" content="article" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "MandiCentral Case Study: Building a Real Business Operations Platform",
+    "description": "A detailed case study about MandiCentral, a real business operations platform for mandi billing, ledgers, reports, PDF generation, mobile APIs, accounting workflows and production deployment.",
+    "author": {
+      "@type": "Person",
+      "name": "Himanshu Joshi"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Himanshu Joshi"
+    },
+    "datePublished": "2026-06-07",
+    "dateModified": "2026-06-07",
+    "mainEntityOfPage": "https://hiijoshi.in/blog/mandicentral-case-study/"
+  }
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f7f7f7;
+      color: #111;
+      line-height: 1.8;
+    }
+
+    header,
+    footer {
+      background: #111;
+      color: white;
+      padding: 22px 20px;
+    }
+
+    header div,
+    main,
+    footer div {
+      max-width: 920px;
+      margin: auto;
+    }
+
+    nav {
+      margin-top: 12px;
+    }
+
+    nav a,
+    footer a {
+      color: white;
+      margin-right: 14px;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    nav a:hover,
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      background: white;
+      padding: 42px 26px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      border-radius: 14px;
+      border: 1px solid #ddd;
+    }
+
+    h1 {
+      line-height: 1.3;
+      font-size: 34px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin-top: 38px;
+      line-height: 1.35;
+    }
+
+    h3 {
+      margin-top: 26px;
+    }
+
+    .meta {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 26px;
+    }
+
+    .summary {
+      background: #f1f5ff;
+      border-left: 4px solid #1d4ed8;
+      padding: 18px 20px;
+      border-radius: 10px;
+      margin: 26px 0;
+    }
+
+    .toc {
+      background: #fafafa;
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 28px 0;
+    }
+
+    .toc a {
+      color: #005bea;
+      text-decoration: none;
+    }
+
+    .toc a:hover {
+      text-decoration: underline;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #eef3ff;
+      color: #1d4ed8;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-right: 6px;
+      margin-top: 8px;
+    }
+
+    .note {
+      background: #fff8e6;
+      border-left: 4px solid #f59e0b;
+      padding: 16px 18px;
+      border-radius: 10px;
+      margin: 24px 0;
+    }
+
+    code {
+      background: #f1f1f1;
+      padding: 2px 6px;
+      border-radius: 5px;
+    }
+
+    a {
+      color: #005bea;
+    }
+
+    ul {
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div>
+      <h2>Himanshu Joshi</h2>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/tools/">Tools</a>
+        <a href="/services/">Services</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <p><a href="/blog/">← Back to Blog</a></p>
+
+    <h1>MandiCentral Case Study: Building a Real Business Operations Platform</h1>
+    <p class="meta">Published on June 7, 2026 by Himanshu Joshi</p>
+
+    <span class="tag">Case Study</span>
+    <span class="tag">Business Software</span>
+    <span class="tag">Full Stack</span>
+    <span class="tag">Deployment</span>
+
+    <div class="summary">
+      <strong>Summary:</strong>
+      This case study explains how I worked on MandiCentral, a real business operations platform for mandi-related workflows.
+      The project included billing, purchase and sales entries, ledgers, PDF generation, accounting reports, mobile API requirements,
+      SEO improvements, and production deployment thinking.
+    </div>
+
+    <p>
+      When I started working on MandiCentral, it was not just another portfolio project or a simple landing page.
+      It was a real business operations platform where small details matter. In a mandi business, users deal with
+      purchases, sales, farmers, suppliers, ledgers, payments, bills, weights, reports, and daily records. If the
+      software gives wrong information or misses an important workflow, the user can face confusion in real business work.
+    </p>
+
+    <p>
+      This project helped me understand the difference between building a normal demo project and improving a real
+      production system. In a demo project, the main target is usually to show a feature. In a real business platform,
+      the target is reliability, accuracy, usability, and long-term maintainability.
+    </p>
+
+    <div class="toc">
+      <strong>In this case study:</strong>
+      <ul>
+        <li><a href="#what-is-mandicentral">What is MandiCentral?</a></li>
+        <li><a href="#problem">The main problem I had to solve</a></li>
+        <li><a href="#features">Important features and workflows</a></li>
+        <li><a href="#pdf">PDF generation and business documents</a></li>
+        <li><a href="#mobile-api">Mobile API requirements</a></li>
+        <li><a href="#reports">Ledgers and accounting reports</a></li>
+        <li><a href="#production">Production deployment thinking</a></li>
+        <li><a href="#learning">What I learned</a></li>
+      </ul>
+    </div>
+
+    <h2 id="what-is-mandicentral">What is MandiCentral?</h2>
+
+    <p>
+      MandiCentral is a business operations platform created for mandi and trading-related workflows. The aim of the
+      platform is to help users manage daily operations such as farmer purchase entries, purchase entries, sales entries,
+      party ledgers, bank ledgers, cash ledgers, business reports, and accounting summaries.
+    </p>
+
+    <p>
+      A mandi business has many moving parts. Every entry needs correct date, party, amount, weight, bill number, payment
+      details, and report impact. A good platform should not only save data but also make the data useful through reports,
+      ledgers, PDFs, and dashboards.
+    </p>
+
+    <p>
+      This is why MandiCentral became a strong learning project for me. It combined frontend work, backend logic, database
+      thinking, report generation, production debugging, and SEO setup.
+    </p>
+
+    <h2 id="problem">The Main Problem I Had to Solve</h2>
+
+    <p>
+      The main challenge was not only adding one new feature. The bigger challenge was improving a real system that already
+      had multiple pending issues and practical requirements. Some issues were related to PDF generation, some were related
+      to mobile API support, some were related to ledger data, and some were related to reports and user experience.
+    </p>
+
+    <p>
+      In a business application, a small issue can break the user flow. For example, if a bill is created but PDF generation
+      fails, the user cannot easily share or print the bill. If a ledger report does not show correct data, the user cannot
+      trust the report. If a mobile app needs data but the API is not ready, the system cannot expand properly.
+    </p>
+
+    <p>
+      My goal was to understand the system deeply and improve it step by step instead of randomly changing code.
+    </p>
+
+    <h2 id="features">Important Features and Workflows</h2>
+
+    <p>
+      While working on MandiCentral, I focused on several important business workflows. These workflows are connected with
+      each other, so one change often affects another part of the system.
+    </p>
+
+    <ul>
+      <li>Farmer purchase entry workflow</li>
+      <li>Purchase entry workflow</li>
+      <li>Sales entry workflow</li>
+      <li>Party ledger and transaction records</li>
+      <li>Bank ledger and cash ledger reports</li>
+      <li>PDF generation for business documents</li>
+      <li>Balance Sheet, Profit and Loss, and Trial Balance reports</li>
+      <li>Mobile API support for app integration</li>
+      <li>SEO and production website improvements</li>
+    </ul>
+
+    <p>
+      Each feature had a business reason. The platform was not created only to show a beautiful UI. It needed to support
+      daily business operations where users want simple screens, correct calculations, downloadable documents, and clear reports.
+    </p>
+
+    <h2 id="pdf">PDF Generation and Business Documents</h2>
+
+    <p>
+      PDF generation was one of the important areas because business users often need documents for printing, sharing, and
+      record keeping. In many business workflows, a feature is not complete until the final document can be generated properly.
+    </p>
+
+    <p>
+      For example, a bill may be saved in the database, but the user still needs a clean PDF version. The PDF should show
+      proper details, amounts, bill number, party information, and layout. If the PDF fails or looks broken, the user will
+      feel that the system is incomplete.
+    </p>
+
+    <p>
+      This taught me an important lesson: user-facing output matters. Backend data is important, but the final user experience
+      is equally important. A business platform should help users complete their actual work, not only store information.
+    </p>
+
+    <h2 id="mobile-api">Mobile API Requirements</h2>
+
+    <p>
+      Another important requirement was mobile app support. A business platform should not be limited only to desktop usage.
+      Many users prefer mobile access for quick entries and daily work.
+    </p>
+
+    <p>
+      The important mobile API areas included:
+    </p>
+
+    <ul>
+      <li>Farmer Purchase Entry API</li>
+      <li>Purchase Entry API</li>
+      <li>Sales Entry API</li>
+    </ul>
+
+    <p>
+      While thinking about mobile APIs, I learned that an API should be predictable and easy for another developer to use.
+      It should have clear request fields, clear response structure, proper authentication, and useful error messages.
+    </p>
+
+    <p>
+      A web app and a mobile app can share the same backend, but only when APIs are designed properly. This helped me understand
+      why backend planning is important for long-term product growth.
+    </p>
+
+    <h2 id="reports">Ledgers and Accounting Reports</h2>
+
+    <p>
+      Reports are the backbone of a business operations platform. Users need reports to understand business performance, payments,
+      receivables, expenses, and financial position.
+    </p>
+
+    <p>
+      In MandiCentral, important report areas included:
+    </p>
+
+    <ul>
+      <li>Bank Ledger</li>
+      <li>Cash Ledger</li>
+      <li>Party Ledger</li>
+      <li>Balance Sheet</li>
+      <li>Profit and Loss Statement</li>
+      <li>Trial Balance</li>
+    </ul>
+
+    <p>
+      Working around reports helped me understand that accounting-related features require careful attention. A wrong amount,
+      wrong direction, wrong date filter, or missing transaction can reduce trust in the system.
+    </p>
+
+    <p>
+      Reports should be clear, filterable, and consistent. A business owner should be able to open a report and quickly understand
+      what is happening in the business.
+    </p>
+
+    <div class="note">
+      <strong>Important learning:</strong>
+      In business software, accuracy is more important than decoration. A clean UI is useful, but correct data is the real value.
+    </div>
+
+    <h2 id="production">Production Deployment Thinking</h2>
+
+    <p>
+      MandiCentral also gave me experience in production thinking. A project that works locally is not automatically ready for
+      real users. Production requires stable deployment, domain setup, HTTPS, server process management, environment variables,
+      SEO files, and proper error handling.
+    </p>
+
+    <p>
+      A live system needs extra care because users can be affected by every change. Before pushing updates, it is important to
+      think about possible side effects. A small code change can affect login, reports, PDFs, or data flow.
+    </p>
+
+    <p>
+      This helped me become more careful with deployment and debugging. I learned to check logs, verify routes, test important
+      pages, and confirm that the live website behaves correctly after changes.
+    </p>
+
+    <h2>SEO and Public Website Improvements</h2>
+
+    <p>
+      Apart from internal business features, the public website also needed SEO improvements. A platform should be discoverable
+      and should have a clean structure for search engines.
+    </p>
+
+    <p>
+      Important SEO-related improvements included sitemap, robots.txt, canonical URL handling, and Google Search Console checks.
+      These technical steps help search engines understand the website structure better.
+    </p>
+
+    <p>
+      I learned that SEO is not only about writing keywords. Technical SEO is also important. Broken links, duplicate URLs, missing
+      sitemap, and poor page structure can create problems for search visibility.
+    </p>
+
+    <h2 id="learning">What I Learned from MandiCentral</h2>
+
+    <p>
+      This project gave me many practical lessons that are difficult to learn from only tutorials.
+    </p>
+
+    <h3>1. Real software needs accuracy</h3>
+    <p>
+      In a business platform, every amount, weight, date, and transaction matters. Users trust the software only when the data is correct.
+    </p>
+
+    <h3>2. A feature is complete only when the user flow is complete</h3>
+    <p>
+      Saving data is not enough. Users also need to view, edit, filter, download, print, and understand that data.
+    </p>
+
+    <h3>3. APIs should be planned for future growth</h3>
+    <p>
+      If mobile apps or other clients need to connect later, the backend should provide clean and useful APIs.
+    </p>
+
+    <h3>4. Production is different from local development</h3>
+    <p>
+      A local app can work fine, but production needs proper deployment, HTTPS, server stability, logs, and monitoring.
+    </p>
+
+    <h3>5. Technical SEO matters</h3>
+    <p>
+      Sitemap, robots.txt, canonical URLs, and Google Search Console help search engines understand the website better.
+    </p>
+
+    <h2>Why This Project Matters to My Portfolio</h2>
+
+    <p>
+      MandiCentral is important for my portfolio because it shows real development experience. It is not only a design project.
+      It includes business logic, backend APIs, reports, deployment, SEO, and user-facing features.
+    </p>
+
+    <p>
+      This type of project helps me explain my skills better because I can talk about actual problems, actual fixes, and actual
+      learning. It also shows that I can work on a system where frontend, backend, database, and production all connect together.
+    </p>
+
+    <h2>Conclusion</h2>
+
+    <p>
+      MandiCentral helped me grow as a developer because it was connected to real business needs. I worked around billing, purchase
+      entries, sales entries, ledgers, reports, PDF generation, mobile APIs, SEO improvements, and production deployment.
+    </p>
+
+    <p>
+      The biggest learning from this project is that real software is not only about writing code. It is about solving user problems,
+      keeping data accurate, making workflows smooth, and building a system that people can actually use in daily work.
+    </p>
+
+    <p>
+      This case study is one step in documenting my real project journey and sharing practical learning from my development experience.
+    </p>
+  </main>
+
+  <footer>
+    <div>
+      <a href="/privacy-policy/">Privacy Policy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/disclaimer/">Disclaimer</a>
+      <p>© 2026 Himanshu Joshi. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
+```

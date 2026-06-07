@@ -1,0 +1,484 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>How I Used PM2 to Run a Node.js App in Production</title>
+  <meta
+    name="description"
+    content="A detailed practical guide on using PM2 to run a Node.js or Next.js app in production with process management, logs, restart, startup and deployment stability."
+  />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hiijoshi.in/blog/pm2-nodejs-production-setup/" />
+
+  <meta property="og:title" content="How I Used PM2 to Run a Node.js App in Production" />
+  <meta
+    property="og:description"
+    content="My practical experience using PM2 for production Node.js app management, logs, restart, startup and server stability."
+  />
+  <meta property="og:url" content="https://hiijoshi.in/blog/pm2-nodejs-production-setup/" />
+  <meta property="og:type" content="article" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How I Used PM2 to Run a Node.js App in Production",
+    "description": "A detailed practical guide on using PM2 to run a Node.js or Next.js app in production with process management, logs, restart, startup and deployment stability.",
+    "author": {
+      "@type": "Person",
+      "name": "Himanshu Joshi"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Himanshu Joshi"
+    },
+    "datePublished": "2026-06-07",
+    "dateModified": "2026-06-07",
+    "mainEntityOfPage": "https://hiijoshi.in/blog/pm2-nodejs-production-setup/"
+  }
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f7f7f7;
+      color: #111;
+      line-height: 1.8;
+    }
+
+    header,
+    footer {
+      background: #111;
+      color: white;
+      padding: 22px 20px;
+    }
+
+    header div,
+    main,
+    footer div {
+      max-width: 920px;
+      margin: auto;
+    }
+
+    nav {
+      margin-top: 12px;
+    }
+
+    nav a,
+    footer a {
+      color: white;
+      margin-right: 14px;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    nav a:hover,
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      background: white;
+      padding: 42px 26px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      border-radius: 14px;
+      border: 1px solid #ddd;
+    }
+
+    h1 {
+      line-height: 1.3;
+      font-size: 34px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin-top: 38px;
+      line-height: 1.35;
+    }
+
+    h3 {
+      margin-top: 26px;
+    }
+
+    .meta {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 26px;
+    }
+
+    .summary {
+      background: #f1f5ff;
+      border-left: 4px solid #1d4ed8;
+      padding: 18px 20px;
+      border-radius: 10px;
+      margin: 26px 0;
+    }
+
+    .note {
+      background: #fff8e6;
+      border-left: 4px solid #f59e0b;
+      padding: 16px 18px;
+      border-radius: 10px;
+      margin: 24px 0;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #eef3ff;
+      color: #1d4ed8;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-right: 6px;
+      margin-top: 8px;
+    }
+
+    pre {
+      background: #111;
+      color: white;
+      padding: 18px;
+      overflow-x: auto;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    code {
+      background: #f1f1f1;
+      padding: 2px 6px;
+      border-radius: 5px;
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+      color: white;
+    }
+
+    a {
+      color: #005bea;
+    }
+
+    ul {
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div>
+      <h2>Himanshu Joshi</h2>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/tools/">Tools</a>
+        <a href="/services/">Services</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <p><a href="/blog/">← Back to Blog</a></p>
+
+    <h1>How I Used PM2 to Run a Node.js App in Production</h1>
+    <p class="meta">Published on June 7, 2026 by Himanshu Joshi</p>
+
+    <span class="tag">PM2</span>
+    <span class="tag">Node.js</span>
+    <span class="tag">Production</span>
+    <span class="tag">Deployment</span>
+
+    <div class="summary">
+      <strong>Summary:</strong>
+      In this article, I share my practical experience using PM2 to run a Node.js or Next.js application in production.
+      I explain why normal terminal-based running is not enough, how PM2 helps keep the app alive, and what I learned
+      while managing a real live project.
+    </div>
+
+    <p>
+      When I first started deploying web applications, I used to think that running a project with a simple command like
+      <code>npm run dev</code> or <code>npm start</code> was enough. It works on a local machine, but production is different.
+      A production app should keep running even after the terminal is closed, the server restarts, or the process crashes.
+    </p>
+
+    <p>
+      While working on real deployment, I understood why a process manager is needed. This is where PM2 becomes very useful.
+      PM2 helps run Node.js applications in the background, monitor them, restart them when required, and manage logs.
+    </p>
+
+    <h2>Why Normal npm Start Is Not Enough</h2>
+
+    <p>
+      If we run a Node.js application directly from the terminal, it stays active only while that terminal session is active.
+      If the SSH connection closes or the process stops, the application can go down. This is not acceptable for a live website.
+    </p>
+
+    <p>
+      For example, a Next.js or Express app may run on port <code>3000</code>. If the process stops, Nginx may still be active,
+      but the backend application will not respond. Users will see an error, and the website may look broken.
+    </p>
+
+    <p>
+      A live application needs better process control. It should run in the background and restart automatically if something
+      goes wrong.
+    </p>
+
+    <h2>What Is PM2?</h2>
+
+    <p>
+      PM2 is a process manager for Node.js applications. It allows us to run apps in the background, check their status,
+      view logs, restart processes, and configure startup behavior after server reboot.
+    </p>
+
+    <p>
+      In simple words, PM2 acts like a manager for the app process. Instead of manually keeping the app running, PM2 handles
+      the process and gives useful commands to monitor it.
+    </p>
+
+    <h2>Installing PM2</h2>
+
+    <p>
+      PM2 is usually installed globally on the server using npm.
+    </p>
+
+    <pre><code>npm install -g pm2</code></pre>
+
+    <p>
+      After installation, I can check whether PM2 is available by running:
+    </p>
+
+    <pre><code>pm2 --version</code></pre>
+
+    <p>
+      If this command returns a version number, PM2 is installed successfully.
+    </p>
+
+    <h2>Starting a Node.js App with PM2</h2>
+
+    <p>
+      For a normal Node.js app, PM2 can start the main server file directly. For example:
+    </p>
+
+    <pre><code>pm2 start server.js --name "my-node-app"</code></pre>
+
+    <p>
+      For a Next.js app, I used PM2 with npm start:
+    </p>
+
+    <pre><code>pm2 start npm --name "my-next-app" -- start</code></pre>
+
+    <p>
+      The name is important because it helps identify the app later when checking status, logs, or restarting the process.
+    </p>
+
+    <h2>Checking App Status</h2>
+
+    <p>
+      After starting the app, I checked whether it was running properly:
+    </p>
+
+    <pre><code>pm2 status</code></pre>
+
+    <p>
+      This command shows app name, process id, status, memory usage, CPU usage, and restart count. It is very useful because
+      it gives a quick overview of all apps running under PM2.
+    </p>
+
+    <p>
+      If the status is online, the app is running. If the status is errored or stopped, then logs should be checked.
+    </p>
+
+    <h2>Viewing Logs</h2>
+
+    <p>
+      Logs are very important in production. When something goes wrong, logs help us understand the actual reason.
+      PM2 provides a simple command to view logs:
+    </p>
+
+    <pre><code>pm2 logs</code></pre>
+
+    <p>
+      To check logs for a specific app:
+    </p>
+
+    <pre><code>pm2 logs my-next-app</code></pre>
+
+    <p>
+      Logs helped me debug build issues, environment variable problems, server errors, and runtime exceptions.
+      Without logs, production debugging becomes guesswork.
+    </p>
+
+    <div class="note">
+      <strong>Important learning:</strong>
+      In production, logs are not optional. They are one of the most useful tools for understanding why an app is failing.
+    </div>
+
+    <h2>Restarting the App</h2>
+
+    <p>
+      After updating code or changing configuration, the app needs to be restarted. PM2 makes this simple:
+    </p>
+
+    <pre><code>pm2 restart my-next-app</code></pre>
+
+    <p>
+      Sometimes I restart all PM2 processes:
+    </p>
+
+    <pre><code>pm2 restart all</code></pre>
+
+    <p>
+      Restarting through PM2 is better than manually killing processes because PM2 keeps the process organized and easy to manage.
+    </p>
+
+    <h2>Stopping and Deleting a Process</h2>
+
+    <p>
+      If I need to stop an app:
+    </p>
+
+    <pre><code>pm2 stop my-next-app</code></pre>
+
+    <p>
+      If I need to remove the process from PM2:
+    </p>
+
+    <pre><code>pm2 delete my-next-app</code></pre>
+
+    <p>
+      These commands are useful when changing the app name, changing deployment structure, or cleaning old processes.
+    </p>
+
+    <h2>Saving PM2 Process List</h2>
+
+    <p>
+      One important step after starting the app is saving the PM2 process list:
+    </p>
+
+    <pre><code>pm2 save</code></pre>
+
+    <p>
+      This tells PM2 to remember the current running processes. Without saving, PM2 may not restore the same processes later.
+    </p>
+
+    <h2>Auto Start After Server Reboot</h2>
+
+    <p>
+      A production server can restart due to updates, maintenance, or unexpected reasons. The app should automatically start again
+      after reboot. PM2 provides a startup command for this.
+    </p>
+
+    <pre><code>pm2 startup</code></pre>
+
+    <p>
+      PM2 usually prints another command that needs to be copied and executed. After that, I run:
+    </p>
+
+    <pre><code>pm2 save</code></pre>
+
+    <p>
+      This helps the app come back online automatically after a server restart.
+    </p>
+
+    <h2>How PM2 Fits with Nginx</h2>
+
+    <p>
+      In my deployment setup, PM2 runs the Node.js or Next.js app on an internal port such as <code>3000</code>.
+      Nginx works as a reverse proxy and sends public domain traffic to that internal app port.
+    </p>
+
+    <p>
+      This means users visit the website through a domain, Nginx receives the request, and PM2 keeps the app process alive
+      behind the scenes.
+    </p>
+
+    <p>
+      Both PM2 and Nginx are important. PM2 manages the app process. Nginx manages public traffic and domain routing.
+    </p>
+
+    <h2>Common Problems I Faced</h2>
+
+    <p>
+      While using PM2 in real deployment, I faced some common issues:
+    </p>
+
+    <ul>
+      <li>The app started but crashed immediately because of missing environment variables.</li>
+      <li>The app was online in PM2 but not accessible because Nginx configuration was wrong.</li>
+      <li>The app failed after build because of dependency or TypeScript errors.</li>
+      <li>The wrong process was running on the same port.</li>
+      <li>The PM2 process list was not saved after restart.</li>
+    </ul>
+
+    <p>
+      Most of these problems were solved by checking <code>pm2 logs</code>, verifying environment variables, and checking
+      Nginx configuration.
+    </p>
+
+    <h2>Useful PM2 Commands I Used</h2>
+
+    <p>
+      These are the commands I found most useful:
+    </p>
+
+    <pre><code>pm2 status
+pm2 logs
+pm2 logs my-next-app
+pm2 restart my-next-app
+pm2 stop my-next-app
+pm2 delete my-next-app
+pm2 save
+pm2 startup</code></pre>
+
+    <p>
+      These commands are enough for most basic production deployments.
+    </p>
+
+    <h2>What I Learned</h2>
+
+    <p>
+      PM2 taught me that deployment is not only about uploading code to a server. A live app needs process management,
+      logging, restarting, and monitoring. Without these things, a website can go down easily and it becomes difficult
+      to understand the reason.
+    </p>
+
+    <p>
+      I also learned that production stability comes from small correct steps. Running the app with PM2, checking logs,
+      saving the process list, and configuring startup are simple steps, but they make the deployment much more reliable.
+    </p>
+
+    <h2>Conclusion</h2>
+
+    <p>
+      PM2 is one of the most useful tools I used for running Node.js and Next.js apps in production. It keeps the app running
+      in the background, helps with logs, allows easy restart, and supports automatic startup after server reboot.
+    </p>
+
+    <p>
+      For any developer deploying a Node.js project on a server, learning PM2 is very helpful. It makes the difference between
+      a temporary local-style setup and a more stable production-ready setup.
+    </p>
+  </main>
+
+  <footer>
+    <div>
+      <a href="/privacy-policy/">Privacy Policy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/disclaimer/">Disclaimer</a>
+      <p>© 2026 Himanshu Joshi. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
+```

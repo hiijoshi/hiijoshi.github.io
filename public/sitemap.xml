@@ -10,10 +10,16 @@
   <url><loc>https://hiijoshi.in/privacy-policy/</loc></url>
   <url><loc>https://hiijoshi.in/terms/</loc></url>
   <url><loc>https://hiijoshi.in/disclaimer/</loc></url>
+
   <url><loc>https://hiijoshi.in/blog/adsense-ready-portfolio-website/</loc></url>
   <url><loc>https://hiijoshi.in/blog/aws-lightsail-nextjs-deployment/</loc></url>
   <url><loc>https://hiijoshi.in/blog/google-search-console-canonical-fix/</loc></url>
-<url><loc>https://hiijoshi.in/blog/sitemap-robots-github-pages/</loc></url>
-<url><loc>https://hiijoshi.in/blog/connect-domain-vercel-dns/</loc></url>
- 
+  <url><loc>https://hiijoshi.in/blog/sitemap-robots-github-pages/</loc></url>
+  <url><loc>https://hiijoshi.in/blog/connect-domain-vercel-dns/</loc></url>
+  <url><loc>https://hiijoshi.in/blog/mandicentral-case-study/</loc></url>
+  <url><loc>https://hiijoshi.in/blog/pm2-nodejs-production-setup/</loc></url>
+  <url><loc>https://hiijoshi.in/blog/nginx-reverse-proxy-web-app/</loc></url>
+  <url><loc>https://hiijoshi.in/blog/fix-website-404-broken-links/</loc></url>
+  <url><loc>https://hiijoshi.in/blog/google-search-console-sitemap-submission/</loc></url>
+
 </urlset>

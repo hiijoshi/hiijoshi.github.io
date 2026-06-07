@@ -1,0 +1,437 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>How I Fixed Website 404 and Broken Link Issues</title>
+  <meta
+    name="description"
+    content="A detailed practical guide on how I fixed 404 errors, broken links, coming soon links, sitemap mistakes and navigation problems on my website."
+  />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hiijoshi.in/blog/fix-website-404-broken-links/" />
+
+  <meta property="og:title" content="How I Fixed Website 404 and Broken Link Issues" />
+  <meta
+    property="og:description"
+    content="My practical experience fixing 404 pages, broken links, wrong URLs, sitemap issues and navigation problems for better SEO and user experience."
+  />
+  <meta property="og:url" content="https://hiijoshi.in/blog/fix-website-404-broken-links/" />
+  <meta property="og:type" content="article" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How I Fixed Website 404 and Broken Link Issues",
+    "description": "A detailed practical guide on how I fixed 404 errors, broken links, coming soon links, sitemap mistakes and navigation problems on my website.",
+    "author": {
+      "@type": "Person",
+      "name": "Himanshu Joshi"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Himanshu Joshi"
+    },
+    "datePublished": "2026-06-07",
+    "dateModified": "2026-06-07",
+    "mainEntityOfPage": "https://hiijoshi.in/blog/fix-website-404-broken-links/"
+  }
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f7f7f7;
+      color: #111;
+      line-height: 1.8;
+    }
+
+    header,
+    footer {
+      background: #111;
+      color: white;
+      padding: 22px 20px;
+    }
+
+    header div,
+    main,
+    footer div {
+      max-width: 920px;
+      margin: auto;
+    }
+
+    nav {
+      margin-top: 12px;
+    }
+
+    nav a,
+    footer a {
+      color: white;
+      margin-right: 14px;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    nav a:hover,
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      background: white;
+      padding: 42px 26px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      border-radius: 14px;
+      border: 1px solid #ddd;
+    }
+
+    h1 {
+      line-height: 1.3;
+      font-size: 34px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin-top: 38px;
+      line-height: 1.35;
+    }
+
+    h3 {
+      margin-top: 26px;
+    }
+
+    .meta {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 26px;
+    }
+
+    .summary {
+      background: #f1f5ff;
+      border-left: 4px solid #1d4ed8;
+      padding: 18px 20px;
+      border-radius: 10px;
+      margin: 26px 0;
+    }
+
+    .note {
+      background: #fff8e6;
+      border-left: 4px solid #f59e0b;
+      padding: 16px 18px;
+      border-radius: 10px;
+      margin: 24px 0;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #eef3ff;
+      color: #1d4ed8;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-right: 6px;
+      margin-top: 8px;
+    }
+
+    pre {
+      background: #111;
+      color: white;
+      padding: 18px;
+      overflow-x: auto;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    code {
+      background: #f1f1f1;
+      padding: 2px 6px;
+      border-radius: 5px;
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+      color: white;
+    }
+
+    a {
+      color: #005bea;
+    }
+
+    ul {
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div>
+      <h2>Himanshu Joshi</h2>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/tools/">Tools</a>
+        <a href="/services/">Services</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <p><a href="/blog/">← Back to Blog</a></p>
+
+    <h1>How I Fixed Website 404 and Broken Link Issues</h1>
+    <p class="meta">Published on June 7, 2026 by Himanshu Joshi</p>
+
+    <span class="tag">404 Fix</span>
+    <span class="tag">SEO</span>
+    <span class="tag">Website</span>
+    <span class="tag">Google Search Console</span>
+
+    <div class="summary">
+      <strong>Summary:</strong>
+      In this article, I explain how I fixed 404 errors and broken links on my website.
+      I share why broken links are bad for users and SEO, how I checked wrong URLs, how I removed coming soon links,
+      and how I updated navigation and sitemap for a cleaner website structure.
+    </div>
+
+    <p>
+      A website may look complete from the homepage, but if users click a link and land on a 404 page, the experience becomes poor.
+      While improving my website for blog content and AdSense readiness, I understood that broken links and unfinished pages can
+      make a site look unprofessional.
+    </p>
+
+    <p>
+      I wanted my website to feel complete and trustworthy. That is why I started checking every important page, every blog link,
+      every footer link, and every sitemap URL. This process helped me remove broken links and make the website cleaner for both
+      users and search engines.
+    </p>
+
+    <h2>What Is a 404 Error?</h2>
+
+    <p>
+      A 404 error appears when a user tries to open a page that does not exist on the website. This can happen because of a wrong
+      URL, deleted page, missing file, incorrect folder structure, or a link that was added before the actual page was created.
+    </p>
+
+    <p>
+      For example, if a blog index links to <code>/blog/example-article/</code> but the actual file
+      <code>public/blog/example-article/index.html</code> does not exist, the user may see a 404 page.
+    </p>
+
+    <p>
+      A few 404 errors are normal on the internet, but too many broken internal links can damage user trust and make the website
+      look unfinished.
+    </p>
+
+    <h2>Why Broken Links Are a Problem</h2>
+
+    <p>
+      Broken links create problems in two ways. First, they affect users. If a visitor clicks an article link and the page does
+      not open, they may leave the website. Second, they affect search engine crawling. If search engines find many broken links,
+      they may treat the site as poorly maintained.
+    </p>
+
+    <p>
+      Broken links are especially risky when preparing for AdSense because the website should look complete, useful, and easy to
+      navigate. A site with many empty or missing pages can look under construction.
+    </p>
+
+    <h2>Where I Found Broken Links</h2>
+
+    <p>
+      I checked several areas of my website:
+    </p>
+
+    <ul>
+      <li>Header navigation links</li>
+      <li>Footer policy links</li>
+      <li>Blog listing page links</li>
+      <li>Individual article back links</li>
+      <li>Sitemap URLs</li>
+      <li>Old pages that were renamed or removed</li>
+    </ul>
+
+    <p>
+      The blog listing page was one of the most important pages to check. If a blog card is clickable, the target article page
+      must exist. Otherwise, the blog index will send users to a broken page.
+    </p>
+
+    <h2>Removing Coming Soon Links</h2>
+
+    <p>
+      One mistake I wanted to avoid was keeping clickable “Coming Soon” articles. If the article is not created yet, it should not
+      be linked as a real article. A coming soon title is not useful for a visitor if clicking it opens a missing page.
+    </p>
+
+    <p>
+      So I followed a simple rule:
+    </p>
+
+    <ul>
+      <li>If the article page exists, show it on the blog page.</li>
+      <li>If the article page does not exist, do not add a clickable link.</li>
+      <li>If a topic is planned for the future, keep it private until the article is ready.</li>
+    </ul>
+
+    <p>
+      This made the blog page cleaner and reduced the chance of broken links.
+    </p>
+
+    <h2>Fixing Wrong URL Structure</h2>
+
+    <p>
+      My website uses static HTML pages inside the public folder. For blog articles, I use this structure:
+    </p>
+
+    <pre><code>public/blog/article-slug/index.html</code></pre>
+
+    <p>
+      This makes the live URL:
+    </p>
+
+    <pre><code>https://hiijoshi.in/blog/article-slug/</code></pre>
+
+    <p>
+      The folder name and the link must match exactly. If the folder is named <code>google-search-console-canonical-fix</code>,
+      then the blog index link should be:
+    </p>
+
+    <pre><code>/blog/google-search-console-canonical-fix/</code></pre>
+
+    <p>
+      Even a small spelling mistake in the slug can create a broken page.
+    </p>
+
+    <h2>Checking Navigation Links</h2>
+
+    <p>
+      I also checked the main navigation links such as Home, Blog, Tools, Services, About, and Contact. These pages are important
+      because they appear on most pages of the website.
+    </p>
+
+    <p>
+      A broken navigation link is worse than a broken hidden link because users can see it everywhere. So I made sure these pages
+      were created and working:
+    </p>
+
+    <ul>
+      <li><code>/blog/</code></li>
+      <li><code>/tools/</code></li>
+      <li><code>/services/</code></li>
+      <li><code>/about/</code></li>
+      <li><code>/contact/</code></li>
+      <li><code>/privacy-policy/</code></li>
+      <li><code>/terms/</code></li>
+      <li><code>/disclaimer/</code></li>
+    </ul>
+
+    <h2>Updating the Sitemap</h2>
+
+    <p>
+      A sitemap should include real and accessible pages. It should not include pages that are missing, unfinished, or planned
+      for later. If the sitemap contains broken URLs, search engines may try to crawl pages that do not exist.
+    </p>
+
+    <p>
+      After creating real blog articles, I added only those article URLs that were actually live. This kept the sitemap clean.
+    </p>
+
+    <p>
+      For example:
+    </p>
+
+    <pre><code>&lt;url&gt;&lt;loc&gt;https://hiijoshi.in/blog/fix-website-404-broken-links/&lt;/loc&gt;&lt;/url&gt;</code></pre>
+
+    <h2>Testing Live Pages</h2>
+
+    <p>
+      After pushing changes, I opened the live website and manually checked every important link. Manual testing is simple but
+      very useful. I opened the blog page, clicked each blog card, checked the header links, and checked footer policy links.
+    </p>
+
+    <p>
+      This helped me confirm that users can move around the website without landing on missing pages.
+    </p>
+
+    <div class="note">
+      <strong>Important learning:</strong>
+      A website should not only have content. It should also have a clean path for users to reach that content.
+    </div>
+
+    <h2>Using Google Search Console</h2>
+
+    <p>
+      Google Search Console is useful for checking indexing and page issues. After fixing links and updating sitemap, I submitted
+      the sitemap and used URL Inspection for important pages.
+    </p>
+
+    <p>
+      URL Inspection helped me check whether Google could access a specific page. After publishing a new article, I used the
+      Request Indexing option for faster discovery.
+    </p>
+
+    <h2>My Final Checklist for Broken Links</h2>
+
+    <p>
+      This is the checklist I followed:
+    </p>
+
+    <ul>
+      <li>Every blog card opens a real article.</li>
+      <li>No coming soon article has a clickable broken link.</li>
+      <li>Header navigation pages open correctly.</li>
+      <li>Footer policy pages open correctly.</li>
+      <li>Sitemap includes only real pages.</li>
+      <li>Canonical URL matches the live URL.</li>
+      <li>Article folder name matches the blog link slug.</li>
+      <li>Live pages are tested after deployment.</li>
+    </ul>
+
+    <h2>What I Learned</h2>
+
+    <p>
+      Fixing 404 and broken link issues taught me that website quality is not only about design or content length.
+      The structure of the website also matters. A site should feel complete when users click around.
+    </p>
+
+    <p>
+      I also learned that SEO and user experience are connected. Clean navigation, working links, correct sitemap, and real
+      content all help search engines and visitors understand the website better.
+    </p>
+
+    <h2>Conclusion</h2>
+
+    <p>
+      Fixing 404 errors and broken links was an important step in improving my website. It made the blog page more reliable,
+      improved user experience, and made the sitemap cleaner for search engines.
+    </p>
+
+    <p>
+      My simple rule is this: if a page is linked publicly, it should be complete and working. This rule helps keep the website
+      professional and avoids the feeling of an unfinished or low-value site.
+    </p>
+  </main>
+
+  <footer>
+    <div>
+      <a href="/privacy-policy/">Privacy Policy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/disclaimer/">Disclaimer</a>
+      <p>© 2026 Himanshu Joshi. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
+```

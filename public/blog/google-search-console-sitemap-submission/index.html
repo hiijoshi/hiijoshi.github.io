@@ -1,0 +1,467 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>How I Submitted My Sitemap in Google Search Console</title>
+  <meta
+    name="description"
+    content="A detailed practical guide on how I created sitemap.xml, submitted it in Google Search Console, checked sitemap success, requested indexing and improved website discovery."
+  />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hiijoshi.in/blog/google-search-console-sitemap-submission/" />
+
+  <meta property="og:title" content="How I Submitted My Sitemap in Google Search Console" />
+  <meta
+    property="og:description"
+    content="My practical experience submitting sitemap.xml in Google Search Console, checking discovered pages and requesting indexing for new blog URLs."
+  />
+  <meta property="og:url" content="https://hiijoshi.in/blog/google-search-console-sitemap-submission/" />
+  <meta property="og:type" content="article" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How I Submitted My Sitemap in Google Search Console",
+    "description": "A detailed practical guide on how I created sitemap.xml, submitted it in Google Search Console, checked sitemap success, requested indexing and improved website discovery.",
+    "author": {
+      "@type": "Person",
+      "name": "Himanshu Joshi"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Himanshu Joshi"
+    },
+    "datePublished": "2026-06-07",
+    "dateModified": "2026-06-07",
+    "mainEntityOfPage": "https://hiijoshi.in/blog/google-search-console-sitemap-submission/"
+  }
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f7f7f7;
+      color: #111;
+      line-height: 1.8;
+    }
+
+    header,
+    footer {
+      background: #111;
+      color: white;
+      padding: 22px 20px;
+    }
+
+    header div,
+    main,
+    footer div {
+      max-width: 920px;
+      margin: auto;
+    }
+
+    nav {
+      margin-top: 12px;
+    }
+
+    nav a,
+    footer a {
+      color: white;
+      margin-right: 14px;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    nav a:hover,
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      background: white;
+      padding: 42px 26px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      border-radius: 14px;
+      border: 1px solid #ddd;
+    }
+
+    h1 {
+      line-height: 1.3;
+      font-size: 34px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin-top: 38px;
+      line-height: 1.35;
+    }
+
+    h3 {
+      margin-top: 26px;
+    }
+
+    .meta {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 26px;
+    }
+
+    .summary {
+      background: #f1f5ff;
+      border-left: 4px solid #1d4ed8;
+      padding: 18px 20px;
+      border-radius: 10px;
+      margin: 26px 0;
+    }
+
+    .note {
+      background: #fff8e6;
+      border-left: 4px solid #f59e0b;
+      padding: 16px 18px;
+      border-radius: 10px;
+      margin: 24px 0;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #eef3ff;
+      color: #1d4ed8;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-right: 6px;
+      margin-top: 8px;
+    }
+
+    pre {
+      background: #111;
+      color: white;
+      padding: 18px;
+      overflow-x: auto;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    code {
+      background: #f1f1f1;
+      padding: 2px 6px;
+      border-radius: 5px;
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+      color: white;
+    }
+
+    a {
+      color: #005bea;
+    }
+
+    ul {
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div>
+      <h2>Himanshu Joshi</h2>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/tools/">Tools</a>
+        <a href="/services/">Services</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <p><a href="/blog/">← Back to Blog</a></p>
+
+    <h1>How I Submitted My Sitemap in Google Search Console</h1>
+    <p class="meta">Published on June 7, 2026 by Himanshu Joshi</p>
+
+    <span class="tag">Google Search Console</span>
+    <span class="tag">Sitemap</span>
+    <span class="tag">Indexing</span>
+    <span class="tag">SEO</span>
+
+    <div class="summary">
+      <strong>Summary:</strong>
+      This article explains how I submitted my sitemap in Google Search Console after adding important pages and blog articles
+      to my website. I share how I created sitemap.xml, checked the live sitemap URL, submitted it, verified success,
+      and requested indexing for new pages.
+    </div>
+
+    <p>
+      After improving my website with blog pages, tools, services, about, contact, privacy policy, terms, and disclaimer pages,
+      the next important step was helping Google discover these pages. Creating pages is only one part of the work.
+      Search engines should also be able to find and crawl those pages properly.
+    </p>
+
+    <p>
+      For this, I used a sitemap.xml file and submitted it in Google Search Console. This gave Google a clear list of important
+      URLs on my website and helped me monitor whether the sitemap was read successfully.
+    </p>
+
+    <h2>What Is a Sitemap?</h2>
+
+    <p>
+      A sitemap is a file that lists important pages of a website. It helps search engines discover URLs in a structured way.
+      A sitemap does not guarantee instant ranking or instant indexing, but it is a useful signal for discovery.
+    </p>
+
+    <p>
+      For a small website, the sitemap can include important pages like:
+    </p>
+
+    <ul>
+      <li>Homepage</li>
+      <li>Blog page</li>
+      <li>Tools page</li>
+      <li>Services page</li>
+      <li>About page</li>
+      <li>Contact page</li>
+      <li>Privacy Policy page</li>
+      <li>Terms page</li>
+      <li>Disclaimer page</li>
+      <li>Individual blog articles</li>
+    </ul>
+
+    <h2>Why I Needed a Sitemap</h2>
+
+    <p>
+      My website was becoming more than a portfolio. I was adding real blog articles and useful static pages.
+      Without a sitemap, Google could still discover pages through links, but a sitemap makes the structure clearer.
+    </p>
+
+    <p>
+      I wanted Google Search Console to show how many pages were discovered through the sitemap. This helped me understand
+      whether my sitemap was working properly.
+    </p>
+
+    <h2>Creating the Sitemap File</h2>
+
+    <p>
+      My website uses a static setup, so I created the sitemap inside the public folder. The file path was:
+    </p>
+
+    <pre><code>public/sitemap.xml</code></pre>
+
+    <p>
+      On the live website, this file becomes available at:
+    </p>
+
+    <pre><code>https://hiijoshi.in/sitemap.xml</code></pre>
+
+    <p>
+      The basic sitemap structure looks like this:
+    </p>
+
+    <pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://hiijoshi.in/&lt;/loc&gt;
+  &lt;/url&gt;
+&lt;/urlset&gt;</code></pre>
+
+    <p>
+      The first line is important. I made sure the sitemap starts correctly with:
+    </p>
+
+    <pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;</code></pre>
+
+    <p>
+      A small mistake in XML format can make the sitemap invalid, so I checked it carefully before pushing changes.
+    </p>
+
+    <h2>Adding Blog URLs to Sitemap</h2>
+
+    <p>
+      Every time I publish a new blog article, I add its URL to sitemap.xml. For example:
+    </p>
+
+    <pre><code>&lt;url&gt;&lt;loc&gt;https://hiijoshi.in/blog/google-search-console-sitemap-submission/&lt;/loc&gt;&lt;/url&gt;</code></pre>
+
+    <p>
+      I only add URLs that actually exist. I avoid adding coming soon pages or planned pages because that can create crawl
+      problems and make the website look unfinished.
+    </p>
+
+    <div class="note">
+      <strong>Important rule:</strong>
+      Only add real, live, working URLs to the sitemap. Do not add broken pages or future article links.
+    </div>
+
+    <h2>Checking the Live Sitemap</h2>
+
+    <p>
+      After pushing the sitemap file, I opened it in the browser:
+    </p>
+
+    <pre><code>https://hiijoshi.in/sitemap.xml</code></pre>
+
+    <p>
+      This step is important because it confirms that the sitemap is live and accessible. If the sitemap URL gives 404,
+      Google Search Console will not be able to read it.
+    </p>
+
+    <p>
+      I also checked that the sitemap does not contain spelling mistakes in URLs. A wrong slug or missing slash can cause
+      broken links.
+    </p>
+
+    <h2>Opening Google Search Console</h2>
+
+    <p>
+      After confirming that the sitemap was live, I opened Google Search Console and selected my website property.
+      The property should match the exact website domain.
+    </p>
+
+    <p>
+      Then I opened the Sitemaps section from the left sidebar.
+    </p>
+
+    <h2>Submitting the Sitemap</h2>
+
+    <p>
+      In the Sitemaps section, I entered:
+    </p>
+
+    <pre><code>sitemap.xml</code></pre>
+
+    <p>
+      Google Search Console automatically uses the domain, so the full sitemap URL becomes:
+    </p>
+
+    <pre><code>https://hiijoshi.in/sitemap.xml</code></pre>
+
+    <p>
+      After submitting it, I waited for Google to process the sitemap.
+    </p>
+
+    <h2>Checking Sitemap Success</h2>
+
+    <p>
+      After submission, Google Search Console showed the sitemap status. The most important thing I checked was whether the
+      status was successful and how many pages were discovered.
+    </p>
+
+    <p>
+      When the sitemap status showed success, it confirmed that Google could read my sitemap file. This was an important step
+      because it meant my technical setup was correct.
+    </p>
+
+    <p>
+      Discovered pages count helped me understand how many URLs Google found from the sitemap.
+    </p>
+
+    <h2>Requesting Indexing for Important Pages</h2>
+
+    <p>
+      Submitting a sitemap helps discovery, but I also used URL Inspection for important pages. URL Inspection allows checking
+      a specific URL and requesting indexing.
+    </p>
+
+    <p>
+      I requested indexing for pages such as:
+    </p>
+
+    <ul>
+      <li><code>https://hiijoshi.in/</code></li>
+      <li><code>https://hiijoshi.in/blog/</code></li>
+      <li><code>https://hiijoshi.in/services/</code></li>
+      <li><code>https://hiijoshi.in/tools/</code></li>
+      <li><code>https://hiijoshi.in/about/</code></li>
+      <li><code>https://hiijoshi.in/contact/</code></li>
+      <li>New blog article URLs</li>
+    </ul>
+
+    <p>
+      Requesting indexing does not guarantee immediate indexing, but it helps Google know that the page is ready to be checked.
+    </p>
+
+    <h2>Common Mistakes to Avoid</h2>
+
+    <p>
+      While working with sitemap and Search Console, I noticed some mistakes that should be avoided:
+    </p>
+
+    <ul>
+      <li>Submitting a sitemap before it is live.</li>
+      <li>Adding URLs that do not exist.</li>
+      <li>Adding coming soon pages in the sitemap.</li>
+      <li>Using wrong XML syntax.</li>
+      <li>Forgetting to update sitemap after publishing new blogs.</li>
+      <li>Submitting sitemap under the wrong website property.</li>
+      <li>Not checking whether pages return 200 OK or 404.</li>
+    </ul>
+
+    <h2>How I Maintain My Sitemap Now</h2>
+
+    <p>
+      My process is simple. Whenever I publish a new blog, I follow these steps:
+    </p>
+
+    <ul>
+      <li>Create the new blog page.</li>
+      <li>Add the article card on the blog index page.</li>
+      <li>Add the article URL in sitemap.xml.</li>
+      <li>Push the changes.</li>
+      <li>Open the live URL and test it.</li>
+      <li>Use URL Inspection in Google Search Console.</li>
+    </ul>
+
+    <p>
+      This process keeps the website organized and reduces the chance of broken links or missing pages.
+    </p>
+
+    <h2>What I Learned</h2>
+
+    <p>
+      Submitting a sitemap taught me that technical SEO is not difficult, but it needs attention to detail.
+      A website should have clear URLs, real content, working links, and a valid sitemap.
+    </p>
+
+    <p>
+      I also learned that Google Search Console is not only for errors. It is a useful tool for understanding how Google discovers
+      and processes website pages.
+    </p>
+
+    <h2>Conclusion</h2>
+
+    <p>
+      Submitting my sitemap in Google Search Console was an important step in improving my website. It helped Google discover
+      my important pages and gave me a clear view of sitemap status and discovered URLs.
+    </p>
+
+    <p>
+      For any portfolio, blog, or business website, sitemap.xml and Google Search Console should be part of the basic setup.
+      They help create a better foundation for search visibility and long-term growth.
+    </p>
+  </main>
+
+  <footer>
+    <div>
+      <a href="/privacy-policy/">Privacy Policy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/disclaimer/">Disclaimer</a>
+      <p>© 2026 Himanshu Joshi. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
+```
